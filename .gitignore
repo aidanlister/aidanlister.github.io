@@ -1,2 +1,5 @@
 _site/
 .sass-cache/
+aidanlister.sublime-*
+.DS_Store
+

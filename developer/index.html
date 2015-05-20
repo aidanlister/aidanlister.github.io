@@ -1,0 +1,17 @@
+---
+layout: default
+title: Developer | Aidan Lister
+section: developer
+---
+<section class="masthead">
+  <div class="container">
+    <h1>Developer</h1>
+    <ul>
+      {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
