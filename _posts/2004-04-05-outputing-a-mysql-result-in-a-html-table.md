@@ -12,13 +12,13 @@ When debugging a queryset without the luxuries of Sequel Pro or PHPMyAdmin, some
  *
  * Draws a HTML table from a query resource
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.0.3
  * @link        http://aidanlister.com/2004/04/outputing-a-mysql-result-in-a-html-table/
  * @param       array   $result    The result of a mysql_query
  * @param       string  $null      Text to replace empty values with
  */
-function mysql_draw_table($result, $null = '&amp;nbsp;')
+function mysql_draw_table($result, $null = '&nbsp;')
 {
     // Sanity check
     if (!is_resource($result) ||
@@ -26,33 +26,33 @@ function mysql_draw_table($result, $null = '&amp;nbsp;')
         return false;
     }
 
-    $out = &quot;&lt;table&gt;\n&quot;;
+    $out = "<table>\n";
   
     // Table header
-    $out .= &quot;\t&lt;tr&gt;&quot;;
-    for ($i = 0, $ii = mysql_num_fields($result); $i &lt; $ii; $i++) {
-        $out .= '&lt;th&gt;' . mysql_field_name($result, $i) . '&lt;/th&gt;';
+    $out .= "\t<tr>";
+    for ($i = 0, $ii = mysql_num_fields($result); $i < $ii; $i++) {
+        $out .= '<th>' . mysql_field_name($result, $i) . '</th>';
     }
-    $out .= &quot;&lt;/tr&gt;\n&quot;;
+    $out .= "</tr>\n";
   
     // Table content
-    for ($i = 0, $ii = mysql_num_rows($result); $i &lt; $ii; $i++) {
-        $out .= &quot;\t&lt;tr&gt;&quot;;
+    for ($i = 0, $ii = mysql_num_rows($result); $i < $ii; $i++) {
+        $out .= "\t<tr>";
 
         $row = mysql_fetch_row($result);
         foreach ($row as $value) {
             // Display empty cells
-            $value = (empty($value) &amp;&amp; ($value != '0')) ?
+            $value = (empty($value) && ($value != '0')) ?
                 $null :
                 htmlspecialchars($value);
 
-            $out .= '&lt;td&gt;' . $value . '&lt;/td&gt;';
+            $out .= '<td>' . $value . '</td>';
         }
 
-        $out .= &quot;&lt;/tr&gt;\n&quot;;
+        $out .= "</tr>\n";
     }
   
-    $out .= &quot;&lt;/table&gt;\n&quot;;
+    $out .= "</table>\n";
     echo $out;
 }
 ?>
@@ -61,15 +61,15 @@ function mysql_draw_table($result, $null = '&amp;nbsp;')
 For example,
 {% highlight php %}
 <?php
-$result = mysql_query(&quot;SELECT VERSION(), USER()&quot;);
+$result = mysql_query("SELECT VERSION(), USER()");
 mysql_draw_table($result);
 ?>
 {% endhighlight %}
 
 Would result in:
 <code>
-&lt;table&gt;
-&lt;tr&gt;&lt;th&gt;VERSION()&lt;/th&gt;&lt;th&gt;USER()&lt;/th&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;5.0.51a-24&lt;/td&gt;&lt;td&gt;aidan@localhost&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
+<table>
+<tr><th>VERSION()</th><th>USER()</th></tr>
+<tr><td>5.0.51a-24</td><td>aidan@localhost</td></tr>
+</table>
 </code>

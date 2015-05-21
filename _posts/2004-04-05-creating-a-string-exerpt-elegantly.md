@@ -10,7 +10,7 @@ Shortening a chunk of text into something suitable for display is an exceptional
 /**
  * Chop a string into a smaller string.
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.1.0
  * @link        http://aidanlister.com/2004/04/creating-a-string-exerpt-elegantly/
  * @param       mixed  $string   The string you want to shorten
@@ -30,7 +30,7 @@ function str_chop($string, $length = 60, $center = false, $append = null)
     $len_append = strlen($append);
  
     // If the string is longer than the maximum length, we need to chop it
-    if ($len_string &gt; $length) {
+    if ($len_string > $length) {
         // Check if we want to chop it in half
         if ($center === true) {
             // Get the lengths of each segment
@@ -57,23 +57,23 @@ function str_chop($string, $length = 60, $center = false, $append = null)
 An example of this function in action:
 {% highlight php %}
 <?php
-$longtext = &quot;this is some really long text with long words that should be chopped&quot;;
-$longlink = &quot;http://thisisareally.longlink/with/lots/of/stupid/paths/&quot;;
+$longtext = "this is some really long text with long words that should be chopped";
+$longlink = "http://thisisareally.longlink/with/lots/of/stupid/paths/";
  
 // Chop at default length
 echo str_chop($longtext);
-echo &quot;\n&quot;;
+echo "\n";
  
 // Chop in the middle
 echo str_chop($longtext, 60, true);
-echo &quot;\n&quot;;
+echo "\n";
  
 // Chop a link
 echo str_chop($longlink, 40, true);
-echo &quot;\n&quot;;
+echo "\n";
  
 // Chop a link whirlpool style
-echo &quot;&lt;a href=\&quot;$longlink\&quot;&gt;&quot; . str_chop($longlink, 40, true) . '&lt;/a&gt;';
+echo "<a href=\"$longlink\">" . str_chop($longlink, 40, true) . '</a>';
 ?>
 {% endhighlight %}
 
@@ -83,5 +83,5 @@ This would produce the following output:
 this is some really long text with long words that shoul ...
 this is some really long text  ... ds that should be chopped
 http://thisisareally ... f/stupid/paths/
-&lt;a href=&quot;http://thisisareally.longlink/with/lots/of/stupid/paths/&quot;&gt;http://thisisareally ... f/stupid/paths/&lt;/a&gt;
+<a href="http://thisisareally.longlink/with/lots/of/stupid/paths/">http://thisisareally ... f/stupid/paths/</a>
 </code>

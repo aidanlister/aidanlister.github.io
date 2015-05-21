@@ -38,7 +38,7 @@ define('STR_HIGHLIGHT_STRIPLINKS', 8);
 /**
  * Highlight a string in text without corrupting HTML tags
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     3.1.1
  * @link        http://aidanlister.com/2004/04/highlighting-a-search-string-in-html-text/
  * @param       string          $text           Haystack - The text to search
@@ -51,20 +51,20 @@ function str_highlight($text, $needle, $options = null, $highlight = null)
 {
     // Default highlighting
     if ($highlight === null) {
-        $highlight = '&lt;strong&gt;\1&lt;/strong&gt;';
+        $highlight = '<strong>\1</strong>';
     }
 
     // Select pattern to use
-    if ($options &amp; STR_HIGHLIGHT_SIMPLE) {
+    if ($options & STR_HIGHLIGHT_SIMPLE) {
         $pattern = '#(%s)#';
         $sl_pattern = '#(%s)#';
     } else {
-        $pattern = '#(?!&lt;.*?)(%s)(?![^&lt;&gt;]*?&gt;)#';
-        $sl_pattern = '#&lt;a\s(?:.*?)&gt;(%s)&lt;/a&gt;#';
+        $pattern = '#(?!<.*?)(%s)(?![^<>]*?>)#';
+        $sl_pattern = '#<a\s(?:.*?)>(%s)</a>#';
     }
 
     // Case sensitivity
-    if (!($options &amp; STR_HIGHLIGHT_CASESENS)) {
+    if (!($options & STR_HIGHLIGHT_CASESENS)) {
         $pattern .= 'i';
         $sl_pattern .= 'i';
     }
@@ -74,12 +74,12 @@ foreach ($needle as $needle_s) {
         $needle_s = preg_quote($needle_s);
 
         // Escape needle with optional whole word check
-        if ($options &amp; STR_HIGHLIGHT_WHOLEWD) {
+        if ($options & STR_HIGHLIGHT_WHOLEWD) {
             $needle_s = '\b' . $needle_s . '\b';
         }
 
         // Strip links
-        if ($options &amp; STR_HIGHLIGHT_STRIPLINKS) {
+        if ($options & STR_HIGHLIGHT_STRIPLINKS) {
             $sl_regex = sprintf($sl_pattern, $needle_s);
             $text = preg_replace($sl_regex, '\1', $text);
         }
@@ -100,40 +100,40 @@ Let's do a quick example:
 $string = 'This is a site about PHP and SQL';
 $search = array('php', 'sql');
 echo str_highlight($string, $search);
-echo &quot;\n&quot;;
+echo "\n";
  
 // With HTML in the text
-$string = 'Link to &lt;a href=&quot;php&quot;&gt;php&lt;/a&gt;';
+$string = 'Link to <a href="php">php</a>';
 $search = 'php';
 echo htmlspecialchars(str_highlight($string, $search));
-echo &quot;\n&quot;;
+echo "\n";
  
 // Matching whole words only
 $string = 'I like to eat bananas with my nana!';
 $search = 'Nana';
 echo str_highlight($string, $search, STR_HIGHLIGHT_SIMPLE|STR_HIGHLIGHT_WHOLEWD);
-echo &quot;\n&quot;;
+echo "\n";
  
 // With custom highlighting
 $string = 'With custom highlighting!';
 $search = 'custom';
-$highlight = '&lt;span style=&quot;text-decoration: underline;&quot;&gt;\1&lt;/span&gt;';
+$highlight = '<span style="text-decoration: underline;">\1</span>';
 echo str_highlight($string, $search, STR_HIGHLIGHT_SIMPLE, $highlight);
-echo &quot;\n&quot;;
+echo "\n";
  
 // With links
-$string = 'I am a &lt;a href=&quot;http://www.php.net&quot;&gt;link&lt;/a&gt;';
+$string = 'I am a <a href="http://www.php.net">link</a>';
 $search = 'link';
-$highlight = '&lt;a href=&quot;http://www.google.com/&quot;&gt;\1&lt;/a&gt;';
+$highlight = '<a href="http://www.google.com/">\1</a>';
 echo htmlspecialchars(str_highlight($string, $search, STR_HIGHLIGHT_STRIPLINKS, $highlight));
 ?>
 {% endhighlight %}
 
 This code would produce the following output:
 <code>
-This is a site about &lt;strong&gt;PHP&lt;/strong&gt; and &lt;strong&gt;SQL&lt;/strong&gt;
-Link to &lt;a href=&quot;/php/&quot;&gt;&lt;strong&gt;php&lt;/strong&gt;&lt;/a&gt;
-I like to eat bananas with my &lt;strong&gt;nana&lt;/strong&gt;!
-With &lt;span style=&quot;text-decoration: underline;&quot;&gt;custom highlighting&lt;/span&gt;!
-I am a &lt;a href=&quot;http://www.google.com/&quot;&gt;link&lt;/a&gt;
+This is a site about <strong>PHP</strong> and <strong>SQL</strong>
+Link to <a href="/php/"><strong>php</strong></a>
+I like to eat bananas with my <strong>nana</strong>!
+With <span style="text-decoration: underline;">custom highlighting</span>!
+I am a <a href="http://www.google.com/">link</a>
 </code>

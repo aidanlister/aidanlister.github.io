@@ -10,7 +10,7 @@ This function allows you to copy an entire directory tree recursively. Symlinks 
 /**
  * Copy a file, or recursively copy a folder and its contents
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.0.1
  * @link        http://aidanlister.com/2004/04/recursively-copying-directories-in-php/
  * @param       string   $source    Source path
@@ -36,18 +36,18 @@ function copyr($source, $dest)
 
     // Loop through the folder
     $dir = dir($source);
-    while (false !== $entry = $dir-&gt;read()) {
+    while (false !== $entry = $dir->read()) {
         // Skip pointers
         if ($entry == '.' || $entry == '..') {
             continue;
         }
 
         // Deep copy directories
-        copyr(&quot;$source/$entry&quot;, &quot;$dest/$entry&quot;);
+        copyr("$source/$entry", "$dest/$entry");
     }
 
     // Clean up
-    $dir-&gt;close();
+    $dir->close();
     return true;
 }
 ?>
@@ -84,14 +84,14 @@ symlink('../', 'testcopy/one-d/my-symlink-relative');
 $status = copyr('testcopy', 'testcopy-copy');
 
 if (file_exists('testcopy-copy')
-        &amp;&amp; file_exists('testcopy-copy/one-b/.hiddenfile')
-        &amp;&amp; file_exists('testcopy-copy/one-c/two-a/testfile')
-        &amp;&amp; is_link('testcopy-copy/one-d/my-symlink-relative')
-        &amp;&amp; (readlink('testcopy-copy/one-d/my-symlink-relative') == '../')
-        &amp;&amp; is_link('testcopy-copy/one-d/my-symlink')) {
-    echo &quot;TEST PASSED&quot;;
+        && file_exists('testcopy-copy/one-b/.hiddenfile')
+        && file_exists('testcopy-copy/one-c/two-a/testfile')
+        && is_link('testcopy-copy/one-d/my-symlink-relative')
+        && (readlink('testcopy-copy/one-d/my-symlink-relative') == '../')
+        && is_link('testcopy-copy/one-d/my-symlink')) {
+    echo "TEST PASSED";
 } else {
-    echo &quot;TEST FAILED&quot;;
+    echo "TEST FAILED";
 }
 ?>
 {% endhighlight %}

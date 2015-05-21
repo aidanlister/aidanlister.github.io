@@ -14,7 +14,7 @@ Part 1: To enable production error logging, we can override cake's production er
 {% highlight php %}
 <?php
 app/config/bootstrap.php
-&lt;?php
+<?php
 /**
  * Handle logging errors in production mode
  */
@@ -82,7 +82,7 @@ if (Configure::read() === 0) {
     // Use the above handling
     set_error_handler('productionError');
 }
-?&gt;
+?>
 ?>
 {% endhighlight %}
 
@@ -91,7 +91,7 @@ Part 2: To enable forward facing user error pages, we can define an AppError cla
 {% highlight php %}
 <?php
 app/app_error.php:
-&lt;?php
+<?php
 class AppError extends ErrorHandler
 {   
     /**
@@ -125,23 +125,23 @@ class AppError extends ErrorHandler
      */
     function __construct($method, $messages)
     {
-        if (in_array($method, $this-&gt;displayErrors)) {
+        if (in_array($method, $this->displayErrors)) {
             Configure::write('debug', 1);
         }
         
-        if (in_array($method, $this-&gt;logErrors)) {
+        if (in_array($method, $this->logErrors)) {
             $bt = debug_backtrace();
             $errfile = $bt[1]['file'];
             $errline = $bt[1]['line'];
-            $parameters = str_replace(&quot;\n&quot;, '',
+            $parameters = str_replace("\n", '',
                 print_r($messages, true));
             $error = sprintf('%s: Called with parameters (%s) in [%s, line %d]',
                 $method, $parameters, $errfile, $errline);
             CakeLog::write(LOG_ERROR, $error);        
         }
         
-        if (in_array($method, $this-&gt;emailErrors)) { 
-            $this-&gt;_notify($method, $messages);
+        if (in_array($method, $this->emailErrors)) { 
+            $this->_notify($method, $messages);
         }
         
         // Handle as normal
@@ -154,14 +154,14 @@ class AppError extends ErrorHandler
     function _notify($method, $messages)
     {
         $subject  = '[CakePHP] Site Error';
-        $headers  = 'From: cakephp@' . $_SERVER['HTTP_HOST'] . &quot;\r\n&quot;;
+        $headers  = 'From: cakephp@' . $_SERVER['HTTP_HOST'] . "\r\n";
         $headers .= 'Reply-To: cakephp@' . $_SERVER['HTTP_HOST'];
-        $message  = 'An occurred error at ' . $_SERVER['HTTP_HOST'] . &quot;.\n\n&quot;;
-        foreach ($messages as $key =&gt; $value) {
-            $message .= sprintf(&quot;    %s: %s\n&quot;, $key, $value);
+        $message  = 'An occurred error at ' . $_SERVER['HTTP_HOST'] . ".\n\n";
+        foreach ($messages as $key => $value) {
+            $message .= sprintf("    %s: %s\n", $key, $value);
         }
         
-        mail($this-&gt;siteManager, $subject, $message, $headers);
+        mail($this->siteManager, $subject, $message, $headers);
     }
 
     /**
@@ -171,11 +171,11 @@ class AppError extends ErrorHandler
      */
     function logic($params)
     {
-        $this-&gt;controller-&gt;set('message', $params['message']);
-        $this-&gt;_outputMessage('logic');
+        $this->controller->set('message', $params['message']);
+        $this->_outputMessage('logic');
     }
 }
-?&gt;
+?>
 ?>
 {% endhighlight %}
 

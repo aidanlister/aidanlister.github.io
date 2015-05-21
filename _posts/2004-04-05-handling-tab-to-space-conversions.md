@@ -12,7 +12,7 @@ This function converts tabs to the appropriate number of spaces to preserve form
 /**
  * Converts tabs to the appropriate amount of spaces while preserving formatting
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.2.0
  * @link        http://aidanlister.com/2004/04/handling-tab-to-space-conversions/
  * @param       string    $text     The text to convert
@@ -22,13 +22,13 @@ This function converts tabs to the appropriate number of spaces to preserve form
 function tab2space ($text, $spaces = 4)
 {
     // Explode the text into an array of single lines
-    $lines = explode(&quot;\n&quot;, $text);
+    $lines = explode("\n", $text);
  
     // Loop through each line
     foreach ($lines as $line) {
  
         // Break out of the loop when there are no more tabs to replace
-        while (false !== $tab_pos = strpos($line, &quot;\t&quot;)) {
+        while (false !== $tab_pos = strpos($line, "\t")) {
  
             // Break the string apart, insert spaces then concatenate
             $start = substr($line, 0, $tab_pos);
@@ -40,7 +40,7 @@ function tab2space ($text, $spaces = 4)
         $result[] = $line;
     }
  
-    return implode(&quot;\n&quot;, $result);
+    return implode("\n", $result);
 }
 ?>
 {% endhighlight %}
@@ -49,19 +49,19 @@ A quick example:
 
 {% highlight php %}
 <?php
-$data  = &quot;fooo\t\tbar\n&quot;;
-$data .= &quot;foooo\t\tbar\n&quot;;
-$data .= &quot;fooooo\t\tbar\n&quot;;
+$data  = "fooo\t\tbar\n";
+$data .= "foooo\t\tbar\n";
+$data .= "fooooo\t\tbar\n";
  
-echo &quot;This is the example data:\n&quot;;
+echo "This is the example data:\n";
 echo $data;
-echo &quot;n&quot;;
+echo "n";
  
-echo &quot;With simple replace:\n&quot;;
-echo str_replace(&quot;\t&quot;, &quot;    &quot;, $data);
-echo &quot;n&quot;;
+echo "With simple replace:\n";
+echo str_replace("\t", "    ", $data);
+echo "n";
  
-echo &quot;With tab2space:\n&quot;;
+echo "With tab2space:\n";
 echo tab2space($data, 8);
 ?>
 {% endhighlight %}

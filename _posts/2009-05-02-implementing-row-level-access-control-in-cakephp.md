@@ -26,34 +26,34 @@ class AcltoolShell extends Shell
      */
     function aco_models()
     {
-        $this-&gt;out('Starting models sync');
+        $this->out('Starting models sync');
         $Paper  = ClassRegistry::init('Paper');
         $Volume = ClassRegistry::init('Volume');
 
         // Create the root node
         $root_alias = 'papers';
-        $this-&gt;Aco-&gt;create();
-        $this-&gt;Aco-&gt;save(array('parent_id' =&gt; null, 'model' =&gt; null, 'alias' =&gt; $root_alias));
-        $aco_root = $this-&gt;Aco-&gt;id;
+        $this->Aco->create();
+        $this->Aco->save(array('parent_id' => null, 'model' => null, 'alias' => $root_alias));
+        $aco_root = $this->Aco->id;
 
         // Iterate all the volumes
-        $volumes = $Volume-&gt;findAll();
+        $volumes = $Volume->findAll();
         foreach ($volumes as $volume) {
             // Create a node for the volume
-            $this-&gt;out(sprintf('Created Aco node: %s/%s', $root_alias, $volume['Volume']['number']));
-            $this-&gt;Aco-&gt;create();
-            $row = array('parent_id' =&gt; $aco_root, 'foreign_key' =&gt; $volume['Volume']['id'], 'model' =&gt; 'Volume', 'alias' =&gt; $volume['Volume']['number']);
-            $this-&gt;Aco-&gt;save($row);
-            $parent_id = $this-&gt;Aco-&gt;id;
+            $this->out(sprintf('Created Aco node: %s/%s', $root_alias, $volume['Volume']['number']));
+            $this->Aco->create();
+            $row = array('parent_id' => $aco_root, 'foreign_key' => $volume['Volume']['id'], 'model' => 'Volume', 'alias' => $volume['Volume']['number']);
+            $this->Aco->save($row);
+            $parent_id = $this->Aco->id;
 
             // Iterate all the papers
-            $papers = $Paper-&gt;find('all', array('conditions' =&gt; array('volume_id' =&gt; $volume['Volume']['id']), 'recursive' =&gt; -1));
+            $papers = $Paper->find('all', array('conditions' => array('volume_id' => $volume['Volume']['id']), 'recursive' => -1));
             foreach ($papers as $paper) {
                 // Create a node for the paper
-                $this-&gt;out(sprintf('Created Aco node: %s/%s/%s', $root_alias, $volume['Volume']['number'], $paper['Paper']['slug']));
-                $this-&gt;Acl-&gt;Aco-&gt;create();
-                $row = array('parent_id' =&gt; $parent_id, 'foreign_key' =&gt; $paper['Paper']['id'], 'model' =&gt; 'Paper', 'alias' =&gt; $paper['Paper']['slug']);
-                $this-&gt;Acl-&gt;Aco-&gt;save($row);
+                $this->out(sprintf('Created Aco node: %s/%s/%s', $root_alias, $volume['Volume']['number'], $paper['Paper']['slug']));
+                $this->Acl->Aco->create();
+                $row = array('parent_id' => $parent_id, 'foreign_key' => $paper['Paper']['id'], 'model' => 'Paper', 'alias' => $paper['Paper']['slug']);
+                $this->Acl->Aco->save($row);
             }
         }
     }
@@ -73,22 +73,22 @@ Once our ACO tree is built, we need to give our users permissions. Again we will
     function vol_perms()
     {
         // Row level access for volumes
-        $this-&gt;out('Creating row-level permissions for volumes');
+        $this->out('Creating row-level permissions for volumes');
         $Volume = ClassRegistry::init('Volume');
-        $volumes = $Volume-&gt;findAll();
+        $volumes = $Volume->findAll();
         foreach ($volumes as $vol) {
-            $this-&gt;out(sprintf('- Entering volume number %s', $vol['Volume']['number']));
-            $Volume-&gt;id = $vol['Volume']['id'];
+            $this->out(sprintf('- Entering volume number %s', $vol['Volume']['number']));
+            $Volume->id = $vol['Volume']['id'];
             foreach ($vol['User'] as $user) {
-                $this-&gt;out(sprintf('-- Granting access to %s', $user['name']));
-                $User-&gt;id = $user['id'];
-                $this-&gt;Acl-&gt;allow($User, $Volume);
+                $this->out(sprintf('-- Granting access to %s', $user['name']));
+                $User->id = $user['id'];
+                $this->Acl->allow($User, $Volume);
             }
         }
     }
 }
 
-?&gt;
+?>
 ?>
 {% endhighlight %}
 
@@ -120,17 +120,17 @@ class Paper extends AppModel
      */
     function parentNode()
     {
-        if (!$this-&gt;id &amp;&amp; empty($this-&gt;data)) {
+        if (!$this->id && empty($this->data)) {
             return null;
         }
-        $data = $this-&gt;data;
-        if (empty($this-&gt;data)) {
-            $data = $this-&gt;read();
+        $data = $this->data;
+        if (empty($this->data)) {
+            $data = $this->read();
         }
         if (empty($data['Paper']['volume_id'])) {
             return null;
         } else {
-            return array('Volume' =&gt; array('id' =&gt; $data['Paper']['volume_id']));
+            return array('Volume' => array('id' => $data['Paper']['volume_id']));
         }
     }
 }
@@ -151,12 +151,12 @@ class PapersController extends AppController
     function beforeFilter()
     {
         $methods = array('admin_edit', 'admin_view', 'admin_delete');
-        if (isset($this-&gt;params['pass'][0]) &amp;&amp; in_array($this-&gt;params['pass'][0], $methods)) {
-            $aco = $this-&gt;Acl-&gt;Aco-&gt;findByModelAndForeignKey('Paper', $this-&gt;params['pass'][0]);
-            $aro = $this-&gt;Acl-&gt;Aro-&gt;findByModelAndForeignKey('User', $this-&gt;Auth-&gt;user('id'));
-            if (!$this-&gt;Acl-&gt;check($aro['Aro'], $aco['Aco'])) {
-                $this-&gt;Session-&gt;setFlash($this-&gt;Auth-&gt;authError);
-                $this-&gt;redirect(array('su' =&gt; true, 'controller' =&gt; 'papers', 'action' =&gt; 'index'));
+        if (isset($this->params['pass'][0]) && in_array($this->params['pass'][0], $methods)) {
+            $aco = $this->Acl->Aco->findByModelAndForeignKey('Paper', $this->params['pass'][0]);
+            $aro = $this->Acl->Aro->findByModelAndForeignKey('User', $this->Auth->user('id'));
+            if (!$this->Acl->check($aro['Aro'], $aco['Aco'])) {
+                $this->Session->setFlash($this->Auth->authError);
+                $this->redirect(array('su' => true, 'controller' => 'papers', 'action' => 'index'));
             }
         }
     }
@@ -177,8 +177,8 @@ class PapersController extends AppController
     function admin_index()
     {
         $papers = array();
-        $user_id = $this-&gt;Auth-&gt;user('id');
-        $nodes = $this-&gt;Acl-&gt;Aro-&gt;findByForeignKeyAndModel($user_id, 'User');
+        $user_id = $this->Auth->user('id');
+        $nodes = $this->Acl->Aro->findByForeignKeyAndModel($user_id, 'User');
         foreach ($nodes['Aco'] as $node) {
             if ($node['model'] === 'Paper') {
                 $papers[] = $node['foreign_key'];
@@ -186,19 +186,19 @@ class PapersController extends AppController
 
             // Get children from volumes
             if ($node['model'] === 'Volume') {
-                $children = $this-&gt;Acl-&gt;Aco-&gt;children($node['id']);
+                $children = $this->Acl->Aco->children($node['id']);
                 foreach ($children as $child) {
                     $papers[] = $child['Aco']['foreign_key'];
                 }
             }
         }
-        $conditions = array('Paper.id' =&gt; $papers);
+        $conditions = array('Paper.id' => $papers);
 
-        if ($this-&gt;Auth-&gt;user('group_id') == 1) {
+        if ($this->Auth->user('group_id') == 1) {
             $conditions = null;
         }
 
-        $this-&gt;set('papers', $this-&gt;paginate($conditions));
+        $this->set('papers', $this->paginate($conditions));
     }
 }
 ?>
@@ -217,20 +217,20 @@ class VolumesController extends AppController
     function admin_index()
     {
         $volumes = array();
-        $user_id = $this-&gt;Auth-&gt;user('id');
-        $nodes = $this-&gt;Acl-&gt;Aro-&gt;findByForeignKeyAndModel($user_id, 'User');
+        $user_id = $this->Auth->user('id');
+        $nodes = $this->Acl->Aro->findByForeignKeyAndModel($user_id, 'User');
         foreach ($nodes['Aco'] as $node) {
             if ($node['model'] === 'Volume') {
                 $volumes[] = $node['foreign_key'];
             }
         }
-        $conditions = array('Volume.id' =&gt; $volumes);
+        $conditions = array('Volume.id' => $volumes);
         
-        if ($this-&gt;Auth-&gt;user('group_id') == 1) {
+        if ($this->Auth->user('group_id') == 1) {
             $conditions = null;
         }
         
-        $this-&gt;set('volumes', $this-&gt;paginate($conditions));
+        $this->set('volumes', $this->paginate($conditions));
     }
 }
 ?>

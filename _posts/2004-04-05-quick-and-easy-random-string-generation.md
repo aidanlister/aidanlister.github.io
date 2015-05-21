@@ -18,7 +18,7 @@ Generating a random string is an incredibly common task, this function provides 
  * If the output parameter does not match one of the above, then the string
  * supplied is used.
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     2.1.0
  * @link        http://aidanlister.com/2004/04/quick-and-easy-random-string-generation/
  * @param       int     $length  Length of string to be generated
@@ -45,7 +45,7 @@ function str_rand($length = 8, $output = 'alphanum')
     // Generate
     $str = '';
     $output_count = strlen($output);
-    for ($i = 0; $length &gt; $i; $i++) {
+    for ($i = 0; $length > $i; $i++) {
         $str .= $output{mt_rand(0, $output_count - 1)};
     }
  

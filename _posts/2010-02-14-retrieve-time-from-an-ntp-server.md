@@ -12,7 +12,7 @@ There's a lot of code floating around the internet to communicate with NTP serve
  *
  * @param    string   $host   The NTP server to retrieve the time from
  * @return   int      The current unix timestamp
- * @author   Aidan Lister &lt;aidan@php.net&gt;
+ * @author   Aidan Lister <aidan@php.net>
  * @link     http://aidanlister.com/2010/02/retrieve-time-from-an-ntp-server/
  */
 function ntp_time($host) {
@@ -22,7 +22,7 @@ function ntp_time($host) {
   socket_connect($sock, $host, 123);
   
   // Send request
-  $msg = &quot;&#92;&#48;10&quot; . str_repeat(&quot;&#92;&#48;&quot;, 47);
+  $msg = "\010" . str_repeat("\0", 47);
   socket_send($sock, $msg, strlen($msg), 0);
   
   // Receive response and close socket

@@ -10,7 +10,7 @@ PHP's <code>rmdir</code> function does not allow the deletion of a folder if it 
 /**
  * Delete a file, or a folder and its contents (recursive algorithm)
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.0.3
  * @link        http://aidanlister.com/2004/04/recursively-deleting-a-folder-in-php/
  * @param       string   $dirname    Directory to delete
@@ -30,7 +30,7 @@ function rmdirr($dirname)
  
     // Loop through the folder
     $dir = dir($dirname);
-    while (false !== $entry = $dir-&gt;read()) {
+    while (false !== $entry = $dir->read()) {
         // Skip pointers
         if ($entry == '.' || $entry == '..') {
             continue;
@@ -41,7 +41,7 @@ function rmdirr($dirname)
     }
  
     // Clean up
-    $dir-&gt;close();
+    $dir->close();
     return rmdir($dirname);
 }
 ?>
@@ -77,8 +77,8 @@ symlink(getcwd() . '/testlink', 'testdelete/one-d/my-symlink-dir');
 $status = rmdirr('testdelete');
 
 // Check if we passed the test
-if ($status === true &amp;&amp;
-        !file_exists('testdelete') &amp;&amp;
+if ($status === true &&
+        !file_exists('testdelete') &&
         file_exists('testlink/testfile')) {
     echo 'TEST PASSED';
     rmdirr('testlink');
@@ -97,7 +97,7 @@ Although I worry that the paradigm-of-choice may overwhelm some readers, in the 
 /**
  * Delete a file, or a folder and its contents (stack algorithm)
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.0.0
  * @link        http://aidanlister.com/repos/v/function.rmdirr.php
  * @param       string   $dirname    Directory to delete
@@ -140,7 +140,7 @@ function rmdirr($dirname)
             
             // Unlink files and add directories to stack
             $child = $entry . DIRECTORY_SEPARATOR . $child;
-            if (is_dir($child) &amp;&amp; !is_link($child)) {
+            if (is_dir($child) && !is_link($child)) {
                 $stack[] = $child;
             } else {
                 unlink($child);

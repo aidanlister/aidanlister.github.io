@@ -10,14 +10,14 @@ This function allows you to quickly display the contents of an array as a HTML t
 /**
  * Translate a result array into a HTML table
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.3.2
  * @link        http://aidanlister.com/2004/04/converting-arrays-to-human-readable-tables/
  * @param       array  $array      The result (numericaly keyed, associative inner) array.
  * @param       bool   $recursive  Recursively generate tables for multi-dimensional arrays
  * @param       string $null       String to output for blank cells
  */
-function array2table($array, $recursive = false, $null = '&amp;nbsp;')
+function array2table($array, $recursive = false, $null = '&nbsp;')
 {
     // Sanity check
     if (empty($array) || !is_array($array)) {
@@ -29,41 +29,41 @@ function array2table($array, $recursive = false, $null = '&amp;nbsp;')
     }
 
     // Start the table
-    $table = &quot;&lt;table&gt;\n&quot;;
+    $table = "<table>\n";
 
     // The header
-    $table .= &quot;\t&lt;tr&gt;&quot;;
+    $table .= "\t<tr>";
     // Take the keys from the first row as the headings
     foreach (array_keys($array[0]) as $heading) {
-        $table .= '&lt;th&gt;' . $heading . '&lt;/th&gt;';
+        $table .= '<th>' . $heading . '</th>';
     }
-    $table .= &quot;&lt;/tr&gt;\n&quot;;
+    $table .= "</tr>\n";
 
     // The body
     foreach ($array as $row) {
-        $table .= &quot;\t&lt;tr&gt;&quot; ;
+        $table .= "\t<tr>" ;
         foreach ($row as $cell) {
-            $table .= '&lt;td&gt;';
+            $table .= '<td>';
 
             // Cast objects
             if (is_object($cell)) { $cell = (array) $cell; }
             
-            if ($recursive === true &amp;&amp; is_array($cell) &amp;&amp; !empty($cell)) {
+            if ($recursive === true && is_array($cell) && !empty($cell)) {
                 // Recursive mode
-                $table .= &quot;\n&quot; . array2table($cell, true, true) . &quot;\n&quot;;
+                $table .= "\n" . array2table($cell, true, true) . "\n";
             } else {
-                $table .= (strlen($cell) &gt; 0) ?
+                $table .= (strlen($cell) > 0) ?
                     htmlspecialchars((string) $cell) :
                     $null;
             }
 
-            $table .= '&lt;/td&gt;';
+            $table .= '</td>';
         }
 
-        $table .= &quot;&lt;/tr&gt;\n&quot;;
+        $table .= "</tr>\n";
     }
 
-    $table .= '&lt;/table&gt;';
+    $table .= '</table>';
     return $table;
 }
 ?>
@@ -86,9 +86,9 @@ echo array2table($data);
 
 Would produce the output:
 <code language="html">
-&lt;table&gt;
-&lt;tr&gt;&lt;th&gt;Foo&lt;/th&gt;&lt;th&gt;Bar&lt;/th&gt;&lt;th&gt;Baz&lt;/th&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Data 1&lt;/td&gt;&lt;td&gt;Data 2&lt;/td&gt;&lt;td&gt;Data 3&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Data 4&lt;/td&gt;&lt;td&gt;Data 5&lt;/td&gt;&lt;td&gt;Data 6&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
+<table>
+<tr><th>Foo</th><th>Bar</th><th>Baz</th></tr>
+<tr><td>Data 1</td><td>Data 2</td><td>Data 3</td></tr>
+<tr><td>Data 4</td><td>Data 5</td><td>Data 6</td></tr>
+</table>
 </code>

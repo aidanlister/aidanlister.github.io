@@ -10,7 +10,7 @@ This function provides a heavily optimised method for calculating the size of la
 /**
  * Calculate the size of a directory by iterating its contents
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.2.0
  * @link        http://aidanlister.com/2004/04/calculating-a-directories-size-in-php/
  * @param       string   $directory    Path to directory
@@ -34,13 +34,13 @@ function dirsize($path)
  
     // Iterate queue
     $queue = array($path);
-    for ($i = 0, $j = count($queue); $i &lt; $j; ++$i)
+    for ($i = 0, $j = count($queue); $i < $j; ++$i)
     {
         // Open directory
         $parent = $i;
-        if (is_dir($queue[$i]) &amp;&amp; $dir = @dir($queue[$i])) {
+        if (is_dir($queue[$i]) && $dir = @dir($queue[$i])) {
             $subdirs = array();
-            while (false !== ($entry = $dir-&gt;read())) {
+            while (false !== ($entry = $dir->read())) {
                 // Skip pointers
                 if ($entry == '.' || $entry == '..') {
                     continue;
@@ -65,7 +65,7 @@ function dirsize($path)
             $j = count($queue);
  
             // Clean up
-            $dir-&gt;close();
+            $dir->close();
             unset($dir);
         }
     }
@@ -80,7 +80,7 @@ A quick usage example:
 <?php
 // Show the current directory
 echo dirsize('.');
-echo &quot;\n&quot;;
+echo "\n";
  
 // We can use size_readable to format the result
 // http://aidanlister.com/repos/v/function.size_readable.php

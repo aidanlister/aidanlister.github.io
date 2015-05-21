@@ -12,7 +12,7 @@ This function performs RAWLIST on the directory to obtain all the files, then de
 /**
  * Recursively delete the files in a directory via FTP.
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.0.0
  * @link        http://aidanlister.com/2004/04/recursively-deleting-directories-via-ftp/
  * @param       resource $ftp_stream   The link identifier of the FTP connection

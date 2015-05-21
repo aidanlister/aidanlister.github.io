@@ -12,7 +12,7 @@ A novel solution to this problem involves using PHP5's new <code>__toString</cod
 /**
  * A simple cycle class for alternating between strings.
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.0.1
  * @link        http://aidanlister.com/2004/04/cycling-between-strings-a-novel-implementation/
  */
@@ -41,8 +41,8 @@ class Cycle
      */
     function __construct()
     {
-        $this-&gt;_args = func_get_args();
-        $this-&gt;_key = -1;
+        $this->_args = func_get_args();
+        $this->_key = -1;
     }
     
 
@@ -53,9 +53,9 @@ class Cycle
      */
     function __toString()
     {
-        return (string) isset($this-&gt;_args[$this-&gt;_key += 1]) ?
-            $this-&gt;_args[$this-&gt;_key] :
-            $this-&gt;_args[$this-&gt;_key = 0] ;
+        return (string) isset($this->_args[$this->_key += 1]) ?
+            $this->_args[$this->_key] :
+            $this->_args[$this->_key = 0] ;
     }
 }
 ?>
@@ -68,8 +68,8 @@ Thus with minimal effort, simply echoing the string will seemingly magically alt
 require_once 'Cycle.php';
 $rowclass = new Cycle('odd', 'even');
 
-for ($i = 0; $i &lt; 5; $i++) {
-    echo &quot;&lt;td class=$rowclass&gt;\n&quot;;
+for ($i = 0; $i < 5; $i++) {
+    echo "<td class=$rowclass>\n";
 }
 ?>
 {% endhighlight %}
@@ -77,10 +77,10 @@ for ($i = 0; $i &lt; 5; $i++) {
 This would output:
 
 <code>
-&lt;td class=odd&gt;
-&lt;td class=even&gt;
-&lt;td class=odd&gt;
-&lt;td class=even&gt;
+<td class=odd>
+<td class=even>
+<td class=odd>
+<td class=even>
 </code>
 
 And there we have it, zebra striped tables without a messy counter or other tricks.

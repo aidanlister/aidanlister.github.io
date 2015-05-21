@@ -10,7 +10,7 @@ A commonly asked question is converting MySQL timestamps into unix timestamps. A
 /**
  * Convert MySQL timestamp to unix timestamp
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.1.0
  * @link        http://aidanlister.com/2004/04/quickly-converting-a-mysql-timestamp-to-a-unix-timestamp/
  * @param       string      $timestamp      MySQL timestamp
@@ -29,18 +29,18 @@ A quick example:
 {% highlight php %}
 <?php
 // Get a MySQL timestamp
-$result = mysql_query(&quot;SELECT NOW() + 0&quot;);
+$result = mysql_query("SELECT NOW() + 0");
 $datetime = mysql_result($result, 0);
-echo &quot;MySQL Datetime: $datetime\n&quot;;
+echo "MySQL Datetime: $datetime\n";
  
 // Convert to unix timestamp
 $timestamp = mysql2unixtime($datetime);
-echo &quot;Unix Timestamp: $timestamp\n&quot;;
+echo "Unix Timestamp: $timestamp\n";
  
 // Better
-$result = mysql_query(&quot;SELECT UNIX_TIMESTAMP(NOW())&quot;);
+$result = mysql_query("SELECT UNIX_TIMESTAMP(NOW())");
 $datetime = mysql_result($result, 0);
-echo &quot;Unix Timestamp, from MySQL: $datetime\n&quot;;
+echo "Unix Timestamp, from MySQL: $datetime\n";
 ?>
 {% endhighlight %}
 

@@ -15,8 +15,8 @@ When dealing with binary data it's always helpful to see exactly what PHP sees -
  * with non-viewable characters.
  *
  * @version     1.3.2
- * @author      Aidan Lister &lt;aidan@php.net&gt;
- * @author      Peter Waller &lt;iridum@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
+ * @author      Peter Waller <iridum@php.net>
  * @link        http://aidanlister.com/2004/04/viewing-binary-data-as-a-hexdump-in-php/
  * @param       string  $data        The string to be dumped
  * @param       bool    $htmloutput  Set to false for non-HTML output
@@ -28,7 +28,7 @@ function hexdump ($data, $htmloutput = true, $uppercase = false, $return = false
     // Init
     $hexi   = '';
     $ascii  = '';
-    $dump   = ($htmloutput === true) ? '&lt;pre&gt;' : '';
+    $dump   = ($htmloutput === true) ? '<pre>' : '';
     $offset = 0;
     $len    = strlen($data);
  
@@ -36,13 +36,13 @@ function hexdump ($data, $htmloutput = true, $uppercase = false, $return = false
     $x = ($uppercase === false) ? 'x' : 'X';
  
     // Iterate string
-    for ($i = $j = 0; $i &lt; $len; $i++)
+    for ($i = $j = 0; $i < $len; $i++)
     {
         // Convert to hexidecimal
-        $hexi .= sprintf(&quot;%02$x &quot;, ord($data[$i]));
+        $hexi .= sprintf("%02$x ", ord($data[$i]));
  
         // Replace non-viewable bytes with '.'
-        if (ord($data[$i]) &gt;= 32) {
+        if (ord($data[$i]) >= 32) {
             $ascii .= ($htmloutput === true) ?
                             htmlentities($data[$i]) :
                             $data[$i];
@@ -59,7 +59,7 @@ function hexdump ($data, $htmloutput = true, $uppercase = false, $return = false
         // Add row
         if (++$j === 16 || $i === $len - 1) {
             // Join the hexi / ascii output
-            $dump .= sprintf(&quot;%04$x  %-49s  %s&quot;, $offset, $hexi, $ascii);
+            $dump .= sprintf("%04$x  %-49s  %s", $offset, $hexi, $ascii);
             
             // Reset vars
             $hexi   = $ascii = '';
@@ -68,16 +68,16 @@ function hexdump ($data, $htmloutput = true, $uppercase = false, $return = false
             
             // Add newline            
             if ($i !== $len - 1) {
-                $dump .= &quot;\n&quot;;
+                $dump .= "\n";
             }
         }
     }
  
     // Finish dump
     $dump .= $htmloutput === true ?
-                '&lt;/pre&gt;' :
+                '</pre>' :
                 '';
-    $dump .= &quot;\n&quot;;
+    $dump .= "\n";
  
     // Output method
     if ($return === false) {
@@ -93,7 +93,7 @@ We can generate some garbage as an example:
 {% highlight php %}
 <?php
 // Generate a string with all sorts of funny characters
-for ($string = '', $i = 0; $i &lt; 255; $i++) {
+for ($string = '', $i = 0; $i < 255; $i++) {
     $string .= chr($i);
 }
  
@@ -106,8 +106,8 @@ This would produce the following dump (make sure you click the view-source butto
 <code>
 0000  00 01 02 03 04 05 06 07  08 09 0a 0b 0c 0d 0e 0f   ........ ........
 0010  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f   ........ ........
-0020  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f    !&quot;#$%&amp;' ()*+,-./
-0030  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f   01234567 89:;&lt;=&gt;?
+0020  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f    !"#$%&' ()*+,-./
+0030  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f   01234567 89:;<=>?
 0040  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f   @ABCDEFG HIJKLMNO
 0050  50 51 52 53 54 55 56 57  58 59 5a 5b 5c 5d 5e 5f   PQRSTUVW XYZ[]^_
 0060  60 61 62 63 64 65 66 67  68 69 6a 6b 6c 6d 6e 6f   `abcdefg hijklmno

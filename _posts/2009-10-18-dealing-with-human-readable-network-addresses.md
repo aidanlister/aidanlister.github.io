@@ -24,7 +24,7 @@ To accomplish this, we define two functions <code>network_expand_range</code> an
  *   5.5.5.20-40
  *   google.com
  *
- * @author Aidan Lister &lt;aidan@php.net&gt;
+ * @author Aidan Lister <aidan@php.net>
  * @link http://aidanlister.com/2009/10/dealing-with-human-readable-network-addresses/
  * @param input $string A newline separated list of network ranges
  * @return array Start and end addresses in dotted quads, or false
@@ -48,7 +48,7 @@ function network_expand_range($network)
     } 
 
     // Simple
-    if ($has_star === false &amp;&amp; $has_dash === false) {    
+    if ($has_star === false && $has_dash === false) {    
         $res   = long2ip(ip2long($network));
         $start = $end = $res;
         if ($res === '0.0.0.0') {
@@ -100,7 +100,7 @@ Next, the sister function to reverse the expansion process:
  *
  * For example, $s=1.1.1.1 and $e=1.1.255.255 into 1.1.*.*
  *
- * @author Aidan Lister &lt;aidan@php.net&gt;
+ * @author Aidan Lister <aidan@php.net>
  * @link http://aidanlister.com/2009/10/dealing-with-human-readable-network-addresses/
  * @param int $start The start address
  * @param int $end The end address
@@ -113,8 +113,8 @@ function network_compact_range($start, $end)
     } else {
         $s = explode('.', $start);
         $e = explode('.', $end);
-        if ($s[0] === $e[0] &amp;&amp; $s[1] === $e[1] &amp;&amp; $s[2] === $e[2]) {
-            if ($s[3] === '0' &amp;&amp; $e[3] === '255') {
+        if ($s[0] === $e[0] && $s[1] === $e[1] && $s[2] === $e[2]) {
+            if ($s[3] === '0' && $e[3] === '255') {
                 $s[3] = '*';
                 $output = implode('.', $s);
             } else {
@@ -144,30 +144,30 @@ $input[] = '4.4.*.*';
 $input[] = '5.5.5.20-40';
 $input[] = 'google.com';
 
-echo &quot;The input is:\n&quot;;
+echo "The input is:\n";
 foreach ($input as $network) {
-    echo &quot;$network\n&quot;;
+    echo "$network\n";
 }
 
-echo &quot;\n&quot;;
-echo &quot;Expanded into ranges:\n&quot;;
+echo "\n";
+echo "Expanded into ranges:\n";
 foreach ($input as $network) {
     list($start, $end) = network_expand_range($network);
-    echo &quot;$start - $end\n&quot;;
+    echo "$start - $end\n";
 }
 
-echo &quot;\n&quot;;
-echo &quot;As a long:\n&quot;;
+echo "\n";
+echo "As a long:\n";
 foreach ($input as $network) {
     list($start, $end) = network_expand_range($network);
-    echo ip2long($start) . ' - ' . ip2long($end) . &quot;\n&quot;;
+    echo ip2long($start) . ' - ' . ip2long($end) . "\n";
 }
 
-echo &quot;\n&quot;;
-echo &quot;Back into compacted form:\n&quot;;
+echo "\n";
+echo "Back into compacted form:\n";
 foreach ($input as $network) {
     list($start, $end) = network_expand_range($network);
-    echo network_compact_range($start, $end), &quot;\n&quot;;
+    echo network_compact_range($start, $end), "\n";
 }
 ?>
 {% endhighlight %}

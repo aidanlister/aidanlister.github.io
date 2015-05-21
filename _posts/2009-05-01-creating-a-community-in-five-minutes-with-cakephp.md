@@ -18,7 +18,7 @@ We will take the following steps:
     <li>Finish with the password retrieval feature</li>
 </ol>
 
-At any time you can <a href='/sites/default/files/wp-content/uploads/2009/05/building-a-community-in-cakephp.zip'>download the source code</a> used in this tutorial. Let's get started!
+At any time you can <a href='/assets/img/uploads/2009/05/building-a-community-in-cakephp.zip'>download the source code</a> used in this tutorial. Let's get started!
 
 <h3>Step 1. Bake a new Cake website</h3>
 
@@ -62,58 +62,58 @@ class User extends AppModel
      * Standard validation behaviour
      */
     var $validate = array(
-        'name' =&gt; array(
-            'length' =&gt; array(
-                'rule'      =&gt; array('minLength', 5),
-                'message'   =&gt; 'Please enter your full name (more than 5 chars)',
-                'required'  =&gt; true,
+        'name' => array(
+            'length' => array(
+                'rule'      => array('minLength', 5),
+                'message'   => 'Please enter your full name (more than 5 chars)',
+                'required'  => true,
             ),
         ),
-        'username' =&gt; array(
-            'length' =&gt; array(
-                'rule'      =&gt; array('minLength', 5),
-                'message'   =&gt; 'Must be more than 5 characters',
-                'required'  =&gt; true,
+        'username' => array(
+            'length' => array(
+                'rule'      => array('minLength', 5),
+                'message'   => 'Must be more than 5 characters',
+                'required'  => true,
             ),
-            'alphanum' =&gt; array(
-                'rule'      =&gt; 'alphanumeric',
-                'message'   =&gt; 'May only contain letters and numbers',
+            'alphanum' => array(
+                'rule'      => 'alphanumeric',
+                'message'   => 'May only contain letters and numbers',
             ),
-            'unique' =&gt; array(
-                'rule'      =&gt; 'isUnique',
-                'message'   =&gt; 'Already taken',
-            ),
-        ),
-        'email' =&gt; array(
-            'email' =&gt; array(
-                'rule'      =&gt; 'email',
-                'message'   =&gt; 'Must be a valid email address',
-            ),
-            'unique' =&gt; array(
-                'rule'      =&gt; 'isUnique',
-                'message'   =&gt; 'Already taken',
+            'unique' => array(
+                'rule'      => 'isUnique',
+                'message'   => 'Already taken',
             ),
         ),
-        'password' =&gt; array(
-            'empty' =&gt; array(
-                'rule'      =&gt; 'notEmpty',
-                'message'   =&gt; 'Must not be blank',
-                'required'  =&gt; true,
+        'email' => array(
+            'email' => array(
+                'rule'      => 'email',
+                'message'   => 'Must be a valid email address',
+            ),
+            'unique' => array(
+                'rule'      => 'isUnique',
+                'message'   => 'Already taken',
             ),
         ),
-        'password_confirm' =&gt; array(
-            'compare'    =&gt; array(
-                'rule'      =&gt; array('password_match', 'password', true),
-                'message'   =&gt; 'The password you entered does not match',
-                'required'  =&gt; true,
+        'password' => array(
+            'empty' => array(
+                'rule'      => 'notEmpty',
+                'message'   => 'Must not be blank',
+                'required'  => true,
             ),
-            'length' =&gt; array(
-                'rule'      =&gt; array('between', 6, 20),
-                'message'   =&gt; 'Use between 6 and 20 characters',
+        ),
+        'password_confirm' => array(
+            'compare'    => array(
+                'rule'      => array('password_match', 'password', true),
+                'message'   => 'The password you entered does not match',
+                'required'  => true,
             ),
-            'empty' =&gt; array(
-                'rule'      =&gt; 'notEmpty',
-                'message'   =&gt; 'Must not be blank',
+            'length' => array(
+                'rule'      => array('between', 6, 20),
+                'message'   => 'Use between 6 and 20 characters',
+            ),
+            'empty' => array(
+                'rule'      => 'notEmpty',
+                'message'   => 'Must not be blank',
             ),
         ),
     );
@@ -129,7 +129,7 @@ class User extends AppModel
      */
     function password_match($data, $password_field, $hashed = true)
     {        
-        $password         = $this-&gt;data[$this-&gt;alias][$password_field];
+        $password         = $this->data[$this->alias][$password_field];
         $keys             = array_keys($data);
         $password_confirm = $hashed ?
               Security::hash($data[$keys[0]], null, true) :
@@ -145,14 +145,14 @@ Next we create our view at <code>views/users/register.ctp</code>. Because we've 
 {% highlight php %}
 <?php
 views/users/register.ctp:
-&lt;?php
-echo $this-&gt;Form-&gt;create(array('action' =&gt; 'register'));
-echo $this-&gt;Form-&gt;input('name');
-echo $this-&gt;Form-&gt;input('email');
-echo $this-&gt;Form-&gt;input('username');
-echo $this-&gt;Form-&gt;input('password_confirm', array('label' =&gt; 'Password', 'type' =&gt; 'password'));
-echo $this-&gt;Form-&gt;input('password', array('label' =&gt; 'Password Confirm'));
-echo $this-&gt;Form-&gt;end('Register');
+<?php
+echo $this->Form->create(array('action' => 'register'));
+echo $this->Form->input('name');
+echo $this->Form->input('email');
+echo $this->Form->input('username');
+echo $this->Form->input('password_confirm', array('label' => 'Password', 'type' => 'password'));
+echo $this->Form->input('password', array('label' => 'Password Confirm'));
+echo $this->Form->end('Register');
 ?>
 {% endhighlight %}
 
@@ -169,7 +169,7 @@ class UsersController extends AppController
      */
     function beforeFilter()
     {
-        $this-&gt;Auth-&gt;allow('register');
+        $this->Auth->allow('register');
         parent::beforeFilter();
     }
     
@@ -178,13 +178,13 @@ class UsersController extends AppController
      */
     function register()
     {
-        if (!empty($this-&gt;data)) {
-            $this-&gt;User-&gt;create();
-            if ($this-&gt;User-&gt;save($this-&gt;data)) {
-                $this-&gt;Session-&gt;setFlash(__('Your account has been created.', true));
-                $this-&gt;redirect('/');
+        if (!empty($this->data)) {
+            $this->User->create();
+            if ($this->User->save($this->data)) {
+                $this->Session->setFlash(__('Your account has been created.', true));
+                $this->redirect('/');
             } else {
-                $this-&gt;Session-&gt;setFlash(__('Your account could not be created.', true));
+                $this->Session->setFlash(__('Your account could not be created.', true));
             }
         }
     }
@@ -202,7 +202,7 @@ class UsersController extends AppController
      */
     function logout()
     {
-       return $this-&gt;redirect($this-&gt;Auth-&gt;logout());
+       return $this->redirect($this->Auth->logout());
     }
 }
 ?>
@@ -222,8 +222,8 @@ class AppController extends Controller
      */
     function beforeRender()
     {
-        unset($this-&gt;data['User']['password']);
-        unset($this-&gt;data['User']['password_confirm']);
+        unset($this->data['User']['password']);
+        unset($this->data['User']['password_confirm']);
     }
 }
 ?>
@@ -238,11 +238,11 @@ Next up is our login page. We need to modify the default layout which lives at <
 {% highlight php %}
 <?php
 views/layouts/default.ctp:
-&lt;div id=&quot;content&quot;&gt;
-    &lt;?php echo $this-&gt;Session-&gt;flash(); ?&gt;
-    &lt;?php echo $this-&gt;Session-&gt;flash('auth'); ?&gt;
-    &lt;?php echo $content_for_layout; ?&gt;
-&lt;/div&gt;
+<div id="content">
+    <?php echo $this->Session->flash(); ?>
+    <?php echo $this->Session->flash('auth'); ?>
+    <?php echo $content_for_layout; ?>
+</div>
 ?>
 {% endhighlight %}
 
@@ -251,11 +251,11 @@ Next we create a very simple login page:
 {% highlight php %}
 <?php
 views/users/login.ctp:
-&lt;?php
-echo $this-&gt;Form-&gt;create(array('action' =&gt; 'login'));
-echo $this-&gt;Form-&gt;input('username');
-echo $this-&gt;Form-&gt;input('password');
-echo $this-&gt;Form-&gt;end('Login');
+<?php
+echo $this->Form->create(array('action' => 'login'));
+echo $this->Form->input('username');
+echo $this->Form->input('password');
+echo $this->Form->end('Login');
 ?>
 {% endhighlight %}
 
@@ -277,7 +277,7 @@ class AppController extends Controller
      */
     function beforeFilter()
     {
-        $this-&gt;Auth-&gt;autoRedirect = false;
+        $this->Auth->autoRedirect = false;
     }
 }
 ?>
@@ -298,19 +298,19 @@ class UsersController extends AppController
     function login()
     {
         // Check for a successful login
-        if (!empty($this-&gt;data) &amp;&amp; $id = $this-&gt;Auth-&gt;user('id')) {
+        if (!empty($this->data) && $id = $this->Auth->user('id')) {
 
             // Set the lastlogin time
-            $fields = array('lastlogin' =&gt; date('Y-m-d H:i:s'), 'modified' =&gt; false);
-            $this-&gt;User-&gt;id = $id;
-            $this-&gt;User-&gt;save($fields, false, array('lastlogin'));
+            $fields = array('lastlogin' => date('Y-m-d H:i:s'), 'modified' => false);
+            $this->User->id = $id;
+            $this->User->save($fields, false, array('lastlogin'));
 
             // Redirect the user
-            $url = array('controller' =&gt; 'users', 'action' =&gt; 'account');
-            if ($this-&gt;Session-&gt;check('Auth.redirect')) {
-                $url = $this-&gt;Session-&gt;read('Auth.redirect');
+            $url = array('controller' => 'users', 'action' => 'account');
+            if ($this->Session->check('Auth.redirect')) {
+                $url = $this->Session->read('Auth.redirect');
             }
-            $this-&gt;redirect($url);
+            $this->redirect($url);
         }
     }
 
@@ -337,16 +337,16 @@ class User extends AppModel
      * Extra form dependent validation rules
      */
     var $validateChangePassword = array(
-        '_import' =&gt; array('password', 'password_confirm'),
-        'password_old' =&gt; array(
-            'correct' =&gt; array(
-                'rule'      =&gt; 'password_old',
-                'message'   =&gt; 'Does not match',
-                'required'  =&gt; true,
+        '_import' => array('password', 'password_confirm'),
+        'password_old' => array(
+            'correct' => array(
+                'rule'      => 'password_old',
+                'message'   => 'Does not match',
+                'required'  => true,
             ),
-            'empty' =&gt; array(
-                'rule'      =&gt; 'notEmpty',
-                'message'   =&gt; 'Must not be blank',
+            'empty' => array(
+                'rule'      => 'notEmpty',
+                'message'   => 'Must not be blank',
             ),
         ),
     );
@@ -362,16 +362,16 @@ class User extends AppModel
     function useValidationRules($key)
     {
         $variable = 'validate' . $key;
-        $rules = $this-&gt;$variable;
+        $rules = $this->$variable;
         
         if (isset($rules['_import'])) {
             foreach ($rules['_import'] as $key) {
-                $rules[$key] = $this-&gt;validate[$key];
+                $rules[$key] = $this->validate[$key];
             }
             unset($rules['_import']);
         }
         
-        $this-&gt;validate = $rules;
+        $this->validate = $rules;
     }
     
 
@@ -382,8 +382,8 @@ class User extends AppModel
      */
     function password_old($data)
     {
-        $password = $this-&gt;field('password',
-            array('User.id' =&gt; $this-&gt;id));
+        $password = $this->field('password',
+            array('User.id' => $this->id));
         return $password ===
             Security::hash($data['password_old'], null, true);
     }
@@ -408,23 +408,23 @@ class UsersController extends AppController
     function account()
     {
         // Set User's ID in model which is needed for validation
-        $this-&gt;User-&gt;id = $this-&gt;Auth-&gt;user('id');
+        $this->User->id = $this->Auth->user('id');
         
-        // Load the user (avoid populating $this-&gt;data)
-        $current_user = $this-&gt;User-&gt;findById($this-&gt;User-&gt;id);
-        $this-&gt;set('current_user', $current_user);
+        // Load the user (avoid populating $this->data)
+        $current_user = $this->User->findById($this->User->id);
+        $this->set('current_user', $current_user);
 
-        $this-&gt;User-&gt;useValidationRules('ChangePassword');
-        $this-&gt;User-&gt;validate['password_confirm']['compare']['rule'] =
+        $this->User->useValidationRules('ChangePassword');
+        $this->User->validate['password_confirm']['compare']['rule'] =
             array('password_match', 'password', false);
 
-        $this-&gt;User-&gt;set($this-&gt;data);
-        if (!empty($this-&gt;data) &amp;&amp; $this-&gt;User-&gt;validates()) {
-            $password = $this-&gt;Auth-&gt;password($this-&gt;data['User']['password']);
-            $this-&gt;User-&gt;saveField('password', $password);
+        $this->User->set($this->data);
+        if (!empty($this->data) && $this->User->validates()) {
+            $password = $this->Auth->password($this->data['User']['password']);
+            $this->User->saveField('password', $password);
 
-            $this-&gt;Session-&gt;setFlash('Your password has been updated');
-            $this-&gt;redirect(array('action' =&gt; 'account'));
+            $this->Session->setFlash('Your password has been updated');
+            $this->redirect(array('action' => 'account'));
         }        
     }
 
@@ -437,17 +437,17 @@ We create a template for the account page as follows:
 {% highlight php %}
 <?php
 views/users/account.ctp:
-&lt;h2&gt;Account Page&lt;/h2&gt;
-&lt;h3&gt;Change your password&lt;/h3&gt;
-&lt;p&gt;You are &lt;?php echo $current_user['User']['name']; ?&gt; who last logged in &lt;?php echo $current_user['User']['lastlogin']; ?&gt;.&lt;/p&gt;
+<h2>Account Page</h2>
+<h3>Change your password</h3>
+<p>You are <?php echo $current_user['User']['name']; ?> who last logged in <?php echo $current_user['User']['lastlogin']; ?>.</p>
 
-&lt;?php
-echo $this-&gt;Form-&gt;create(array('action' =&gt; 'account'));
-echo $this-&gt;Form-&gt;input('password_old',     array('label' =&gt; 'Old password', 'type' =&gt; 'password', 'autocomplete' =&gt; 'off'));
-echo $this-&gt;Form-&gt;input('password_confirm', array('label' =&gt; 'New password', 'type' =&gt; 'password', 'autocomplete' =&gt; 'off'));
-echo $this-&gt;Form-&gt;input('password',         array('label' =&gt; 'Re-enter new password', 'type' =&gt; 'password', 'autocomplete' =&gt; 'off'));
-echo $this-&gt;Form-&gt;end('Update Password');
-?&gt;
+<?php
+echo $this->Form->create(array('action' => 'account'));
+echo $this->Form->input('password_old',     array('label' => 'Old password', 'type' => 'password', 'autocomplete' => 'off'));
+echo $this->Form->input('password_confirm', array('label' => 'New password', 'type' => 'password', 'autocomplete' => 'off'));
+echo $this->Form->input('password',         array('label' => 'Re-enter new password', 'type' => 'password', 'autocomplete' => 'off'));
+echo $this->Form->end('Update Password');
+?>
 ?>
 {% endhighlight %}
 
@@ -470,11 +470,11 @@ class Token extends AppModel
     function generate($data = null)
     {
         $data = array(
-          'token' =&gt; substr(md5(uniqid(rand(), 1)), 0, 10),
-          'data'  =&gt; serialize($data),
+          'token' => substr(md5(uniqid(rand(), 1)), 0, 10),
+          'data'  => serialize($data),
         );
         
-        if ($this-&gt;save($data)) {
+        if ($this->save($data)) {
             return $data['token'];
         }
         
@@ -486,10 +486,10 @@ class Token extends AppModel
      */
     function get($token)
     {
-        $this-&gt;garbage();
-        $token = $this-&gt;findByToken($token);
+        $this->garbage();
+        $token = $this->findByToken($token);
         if ($token) {
-          $this-&gt;delete($token['Token']['id']);
+          $this->delete($token['Token']['id']);
           return unserialize($token['Token']['data']);
         }
           
@@ -501,7 +501,7 @@ class Token extends AppModel
      */
     function garbage()
     {   
-        return $this-&gt;deleteAll(array('created &lt; INTERVAL -1 DAY + NOW()'));
+        return $this->deleteAll(array('created < INTERVAL -1 DAY + NOW()'));
     }
 }
 ?>
@@ -526,7 +526,7 @@ We next update the users controller to make the <code>recover</code> and <code>v
 {% highlight php %}
 <?php
 controllers/users_controller.php:
-&lt;?php
+<?php
 class UsersController extends AppController
 {
     var $components = array('Auth', 'Email');
@@ -538,7 +538,7 @@ class UsersController extends AppController
      */
     function beforeFilter()
     {
-        $this-&gt;Auth-&gt;allow('register', 'recover', 'verify');
+        $this->Auth->allow('register', 'recover', 'verify');
         parent::beforeFilter();
     }
     
@@ -547,28 +547,28 @@ class UsersController extends AppController
      */
     function recover()
     {
-        if ($this-&gt;Auth-&gt;user()) {
-            $this-&gt;redirect(array('controller' =&gt; 'users', 'action' =&gt; 'account'));
+        if ($this->Auth->user()) {
+            $this->redirect(array('controller' => 'users', 'action' => 'account'));
         }
         
-        if (!empty($this-&gt;data['User']['email'])) {
+        if (!empty($this->data['User']['email'])) {
             $Token = ClassRegistry::init('Token');
-            $user = $this-&gt;User-&gt;findByEmail($this-&gt;data['User']['email']);
+            $user = $this->User->findByEmail($this->data['User']['email']);
             
             if ($user === false) {
-                $this-&gt;Session-&gt;setFlash('No matching user found');
+                $this->Session->setFlash('No matching user found');
                 return false;
             }
             
-            $token = $Token-&gt;generate(array('User' =&gt; $user['User']));
-            $this-&gt;Session-&gt;setFlash('An email has been sent to your account, please follow the instructions in this email.');
-            $this-&gt;Email-&gt;to = $user['User']['email']; 
-            $this-&gt;Email-&gt;subject = 'Password Recovery'; 
-            $this-&gt;Email-&gt;from = 'Support &lt;support@example.com&gt;';
-            $this-&gt;Email-&gt;template = 'recover';
-            $this-&gt;set('user', $user);
-            $this-&gt;set('token', $token);
-            $this-&gt;Email-&gt;send();
+            $token = $Token->generate(array('User' => $user['User']));
+            $this->Session->setFlash('An email has been sent to your account, please follow the instructions in this email.');
+            $this->Email->to = $user['User']['email']; 
+            $this->Email->subject = 'Password Recovery'; 
+            $this->Email->from = 'Support <support@example.com>';
+            $this->Email->template = 'recover';
+            $this->set('user', $user);
+            $this->set('token', $token);
+            $this->Email->send();
         }
     }
     
@@ -577,28 +577,28 @@ class UsersController extends AppController
      */
     function verify($token_str = null)
     {
-        if ($this-&gt;Auth-&gt;user()) {
-            $this-&gt;redirect(array('controller' =&gt; 'users', 'action' =&gt; 'account'));
+        if ($this->Auth->user()) {
+            $this->redirect(array('controller' => 'users', 'action' => 'account'));
         }
 
         $Token = ClassRegistry::init('Token');
         
-        $res = $Token-&gt;get($token_str);
+        $res = $Token->get($token_str);
         if ($res) {
             // Update the users password
-            $password = $this-&gt;User-&gt;generatePassword();
-            $this-&gt;User-&gt;id = $res['User']['id'];
-            $this-&gt;User-&gt;saveField('password', $this-&gt;Auth-&gt;password($password));
-            $this-&gt;set('success', true);
+            $password = $this->User->generatePassword();
+            $this->User->id = $res['User']['id'];
+            $this->User->saveField('password', $this->Auth->password($password));
+            $this->set('success', true);
 
             // Send email with new password
-            $this-&gt;Email-&gt;to = $res['User']['email'];
-            $this-&gt;Email-&gt;subject = 'Password Changed';
-            $this-&gt;Email-&gt;from = 'Support &lt;support@example.com&gt;';
-            $this-&gt;Email-&gt;template = 'verify';
-            $this-&gt;set('user', $res);
-            $this-&gt;set('password', $password);
-            $this-&gt;Email-&gt;send();
+            $this->Email->to = $res['User']['email'];
+            $this->Email->subject = 'Password Changed';
+            $this->Email->from = 'Support <support@example.com>';
+            $this->Email->template = 'verify';
+            $this->set('user', $res);
+            $this->set('password', $password);
+            $this->Email->send();
         }
     }
 
@@ -632,7 +632,7 @@ class User extends AppModel
         $num_cons = count($cons);
         
         $password = '';
-        for ($i = 0; $i &lt; $length; $i++){
+        for ($i = 0; $i < $length; $i++){
             $password .= $cons[rand(0, $num_cons - 1)] . $vowels[rand(0, $num_vowels - 1)];
         }
         
@@ -646,24 +646,24 @@ We define two email templates for recovery and verification respectively:
 {% highlight php %}
 <?php
 views/elements/email/text/recover.ctp:
-Dear &lt;?php echo $user['User']['name']; ?&gt;,
+Dear <?php echo $user['User']['name']; ?>,
 
 Someone is attempting to reset your password.
 
-Your username for this account is: &lt;?php echo $user['User']['username']; ?&gt;
+Your username for this account is: <?php echo $user['User']['username']; ?>
 
 
 If you wish to continue, you may reset your password by
 following this link:
 
-    &lt;?php echo Router::url(array('controller' =&gt; 'users', 'action' =&gt; 'verify', $token), true); ?&gt;
+    <?php echo Router::url(array('controller' => 'users', 'action' => 'verify', $token), true); ?>
 
 
 If you did not initiate this action, please contact
 support. You can log in to change your password
 at this address:
 
-    &lt;?php echo Router::url(array('controller' =&gt; 'users', 'action' =&gt; 'login'), true); ?&gt;
+    <?php echo Router::url(array('controller' => 'users', 'action' => 'login'), true); ?>
     
 
 Thanks,
@@ -674,20 +674,20 @@ Support
 {% highlight php %}
 <?php
 views/elements/email/text/verify.ctp:
-Dear &lt;?php echo $user['User']['name']; ?&gt;,
+Dear <?php echo $user['User']['name']; ?>,
 
 Your password has been reset, please use the following
 details to log into our site.
 
-    Username: &lt;?php echo $user['User']['username']; ?&gt;
+    Username: <?php echo $user['User']['username']; ?>
     
-    Password: &lt;?php echo $password; ?&gt;
+    Password: <?php echo $password; ?>
 
 
 Please change your password to something more memorable.
 You can log in to change your password at this address:
 
-    &lt;?php echo Router::url(array('controller' =&gt; 'users', 'action' =&gt; 'login'), true); ?&gt;
+    <?php echo Router::url(array('controller' => 'users', 'action' => 'login'), true); ?>
     
 
 Thanks,
@@ -700,28 +700,28 @@ And finally we define our two templates for the recovery and verification views:
 {% highlight php %}
 <?php
 views/users/recover.ctp:
-&lt;h2&gt;Recover Password&lt;/h2&gt;
+<h2>Recover Password</h2>
 
-&lt;?php
-echo $this-&gt;Form-&gt;create('User', array('action' =&gt; 'recover'));
-echo $this-&gt;Form-&gt;input('email');
-echo $this-&gt;Form-&gt;end('Recover');
-?&gt;
+<?php
+echo $this->Form->create('User', array('action' => 'recover'));
+echo $this->Form->input('email');
+echo $this->Form->end('Recover');
+?>
 ?>
 {% endhighlight %}
 
 {% highlight php %}
 <?php
 views/users/verify.ctp:
-&lt;h2&gt;Recover Password&lt;/h2&gt;
+<h2>Recover Password</h2>
 
-&lt;?php if (isset($success)): ?&gt;
-    &lt;div class=&quot;message&quot;&gt;Access verified. Your new password has been emailed to you.&lt;/div&gt;
-    &lt;p&gt;A new password has been generated for your account and mailed to you. After you've logged in, you should change your password to something memorable via the account information page.&lt;/p&gt;
-&lt;?php else: ?&gt;
-    &lt;div class=&quot;warning&quot;&gt;Invalid token. This page has expired, or the link was not copied from your email client correctly.&lt;/div&gt;
-    &lt;p&gt;Make sure you have copied the entire link correctly, pasting it together if the link was split over two lines. If you're copying the link correctly and still can't get access, please contact us.&lt;/p&gt;
-&lt;?php endif; ?&gt;
+<?php if (isset($success)): ?>
+    <div class="message">Access verified. Your new password has been emailed to you.</div>
+    <p>A new password has been generated for your account and mailed to you. After you've logged in, you should change your password to something memorable via the account information page.</p>
+<?php else: ?>
+    <div class="warning">Invalid token. This page has expired, or the link was not copied from your email client correctly.</div>
+    <p>Make sure you have copied the entire link correctly, pasting it together if the link was split over two lines. If you're copying the link correctly and still can't get access, please contact us.</p>
+<?php endif; ?>
 ?>
 {% endhighlight %}
 

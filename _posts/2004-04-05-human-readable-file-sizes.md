@@ -10,7 +10,7 @@ A very common task is converting a number of bytes into something for human dige
 /**
  * Return human readable sizes
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.3.0
  * @link        http://aidanlister.com/2004/04/human-readable-file-sizes/
  * @param       int     $size        size in bytes
@@ -29,13 +29,13 @@ function size_readable($size, $max = null, $system = 'si', $retstring = '%01.2f 
  
     // Max unit to display
     $depth = count($sys['prefix']) - 1;
-    if ($max &amp;&amp; false !== $d = array_search($max, $sys['prefix'])) {
+    if ($max && false !== $d = array_search($max, $sys['prefix'])) {
         $depth = $d;
     }
  
     // Loop
     $i = 0;
-    while ($size &gt;= $sys['size'] &amp;&amp; $i &lt; $depth) {
+    while ($size >= $sys['size'] && $i < $depth) {
         $size /= $sys['size'];
         $i++;
     }
@@ -49,20 +49,20 @@ An example:
 {% highlight php %}
 <?php
 // Simple
-echo &quot;Simple:\n&quot;;
-echo size_readable(5500), &quot;\n&quot;;
-echo size_readable(17139812000), &quot;\n&quot;;
+echo "Simple:\n";
+echo size_readable(5500), "\n";
+echo size_readable(17139812000), "\n";
  
 // Maximum unit
-echo &quot;Max units in MB:\n&quot;;
-echo size_readable(81620000000, 'MB'), &quot;\n&quot;;
+echo "Max units in MB:\n";
+echo size_readable(81620000000, 'MB'), "\n";
  
 // 4 decimal accuracy
-echo &quot;4 decimals:\n&quot;;
-echo size_readable(91711816100, null, true, '%01.4f %s'), &quot;\n&quot;;
+echo "4 decimals:\n";
+echo size_readable(91711816100, null, true, '%01.4f %s'), "\n";
  
 // 1 decimal accuracy, units in brackets, max unit in MB
-echo &quot;1 decimal, units in brackets, max unit of MB:\n&quot;;
+echo "1 decimal, units in brackets, max unit of MB:\n";
 $size = disk_total_space('/home');
 echo size_readable($size, 'MB', true, '%01.1f (%s)');
 ?>

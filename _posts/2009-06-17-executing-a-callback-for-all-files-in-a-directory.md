@@ -10,7 +10,7 @@ A common question when dealing with deep directory structures concerns how a fun
 /**
  * Allows running a callback on all files in a deep directory structure
  *
- * @author Aidan Lister &lt;aidan@php.net&gt;
+ * @author Aidan Lister <aidan@php.net>
  * @param string $dirname The directory to walk
  * @param callable $callable The callable to execute on all files found
  * @param mixed $arg{n} Extra parameters to be passed to the callable
@@ -57,7 +57,7 @@ So, for some examples. We'll start simple and simply print the directory:
 
 {% highlight php %}
 <?php
-$func = create_function('$file', 'echo &quot;found $file&quot;;');
+$func = create_function('$file', 'echo "found $file";');
 directory_walk('target-dir', $func);
 ?>
 {% endhighlight %}

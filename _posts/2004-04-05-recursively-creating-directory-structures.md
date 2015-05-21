@@ -10,7 +10,7 @@ Every now and then you want to create a deep directory structure on the fly. Thi
 /**
  * Create a directory structure recursively
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.0.2
  * @link        http://aidanlister.com/2004/04/recursively-creating-directory-structures/
  * @param       string   $pathname    The directory structure to create

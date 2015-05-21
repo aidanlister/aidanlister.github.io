@@ -11,7 +11,7 @@ HTML colours are usually represented as a 6 character hexadecimal string. To con
  * Convert a Color-HEX string into an RGB string
  *
  * @version     1.0.0
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @link        http://aidanlister.com/2004/04/converting-html-colours-from-hex-to-rgb/
  * @param       string  $hex        The hex string
  * @param       string  $format     Format of the output

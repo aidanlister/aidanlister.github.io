@@ -13,7 +13,7 @@ When you have two numbers that need to be indexed together for speedy lookups th
  * @param    int   $x   The first number
  * @param    int   $y   The second number
  * @return   int      The Morton Interleave
- * @author   Aidan Lister &lt;aidan@php.net&gt;
+ * @author   Aidan Lister <aidan@php.net>
  * @link     http://aidanlister.com/2010/11/interleaving-numbers/
  */
 function interleave($x, $y) {
@@ -21,14 +21,14 @@ function interleave($x, $y) {
     $position = 0;
     $bit = 1;
  
-    while ($bit &lt;= $x || $bit &lt;= $y) {
-        if ($bit &amp; $x)
-            $result |= 1 &lt;&lt; (2*$position+1);
-        if ($bit &amp; $y)
-            $result |= 1 &lt;&lt; (2*$position);
+    while ($bit <= $x || $bit <= $y) {
+        if ($bit & $x)
+            $result |= 1 << (2*$position+1);
+        if ($bit & $y)
+            $result |= 1 << (2*$position);
  
         $position += 1;
-        $bit = 1 &lt;&lt; $position;
+        $bit = 1 << $position;
     }
     return $result;
 }

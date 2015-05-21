@@ -9,7 +9,7 @@ This will generates valid XHTML output, with function referencing (links back to
 
 Extendable output methods provide loads of flexibility:
 <ul>
-<li><code>toHtml()</code> outputs highlighted PHP, lines ending with a &lt;br&gt;</li>
+<li><code>toHtml()</code> outputs highlighted PHP, lines ending with a <br></li>
         <li><code>toHtmlBlock()</code> was designed for highlighting PHP code in user comments. Text is unaffected, but PHP code is wrapped and styled.</li>
         <li><code>toList()</code> outputs highlighted PHP in an orderedlist.</li>
         <li><code>toArray()</code> outputs the highlighted PHP as an array, allowing for further customisation.</li>
@@ -47,7 +47,7 @@ require_once 'PHP/Compat/Constant/T.php';
  * Highlighting can be inline (with styles), or the same as
  * highlight_file() where colors are taken from php.ini.
  *
- * @author      Aidan Lister &lt;aidan@php.net&gt;
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.4.3
  * @link        http://aidanlister.com/2004/04/improved-php-syntax-highlighting/
  */
@@ -60,7 +60,7 @@ class PHP_Highlight
      * By default, it contains the colours as specified by php.ini
      *
      * For example, to change the colour of strings, use something
-     * simular to $h-&gt;highlight['string'] = 'blue';
+     * simular to $h->highlight['string'] = 'blue';
      *
      * @var         array
      * @access      public
@@ -77,8 +77,8 @@ class PHP_Highlight
      * @access      public
      */
     var $replace = array(
-        &quot;\t&quot;    =&gt; '&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;',
-        ' '     =&gt; '&amp;nbsp;');
+        "\t"    => '&nbsp;&nbsp;&nbsp;&nbsp;',
+        ' '     => '&nbsp;');
 
     /**
      * Format of the link to the PHP manual page
@@ -86,7 +86,7 @@ class PHP_Highlight
      * @var         string
      * @access      public
      */
-    var $manual = '&lt;a href=&quot;http://www.php.net/function.%s&quot;&gt;%s&lt;/a&gt;';
+    var $manual = '<a href="http://www.php.net/function.%s">%s</a>';
 
     /**
      * Format of the span tag to be wrapped around each token
@@ -128,26 +128,26 @@ class PHP_Highlight
         // Inline
         if ($inline === false) {
             // Default colours from php.ini
-            $this-&gt;highlight = array(
-                'string'    =&gt; ini_get('highlight.string'),
-                'comment'   =&gt; ini_get('highlight.comment'),
-                'keyword'   =&gt; ini_get('highlight.keyword'),
-                'bg'        =&gt; ini_get('highlight.bg'),
-                'default'   =&gt; ini_get('highlight.default'),
-                'html'      =&gt; ini_get('highlight.html')
+            $this->highlight = array(
+                'string'    => ini_get('highlight.string'),
+                'comment'   => ini_get('highlight.comment'),
+                'keyword'   => ini_get('highlight.keyword'),
+                'bg'        => ini_get('highlight.bg'),
+                'default'   => ini_get('highlight.default'),
+                'html'      => ini_get('highlight.html')
             );
-            $this-&gt;span = '&lt;span style=&quot;color: %s;&quot;&gt;%s&lt;/span&gt;';
+            $this->span = '<span style="color: %s;">%s</span>';
         } else {
             // Basic styles
-            $this-&gt;highlight = array(
-                'string'    =&gt; 'string',
-                'comment'   =&gt; 'comment',
-                'keyword'   =&gt; 'keyword',
-                'bg'        =&gt; 'bg',
-                'default'   =&gt; 'default',
-                'html'      =&gt; 'html'
+            $this->highlight = array(
+                'string'    => 'string',
+                'comment'   => 'comment',
+                'keyword'   => 'keyword',
+                'bg'        => 'bg',
+                'default'   => 'default',
+                'html'      => 'html'
             );
-            $this-&gt;span = '&lt;span class=&quot;%s&quot;&gt;%s&lt;/span&gt;';
+            $this->span = '<span class="%s">%s</span>';
         }
     }
 
@@ -161,7 +161,7 @@ class PHP_Highlight
      */
     function loadFile($file)
     {
-        $this-&gt;_source = file_get_contents($file);
+        $this->_source = file_get_contents($file);
         return true;
     }
 
@@ -175,7 +175,7 @@ class PHP_Highlight
      */
     function loadString($string)
     {
-        $this-&gt;_source = $string;
+        $this->_source = $string;
         return true;
     }
 
@@ -192,31 +192,31 @@ class PHP_Highlight
     function toArray($funcref = true, $blocks = false)
     {
         // Ensure source has been loaded
-        if ($this-&gt;_source == false) {
+        if ($this->_source == false) {
             return false;
         }
 
         // Init
-        $tokens     = token_get_all($this-&gt;_source);
-        $manual     = $this-&gt;manual;
-        $span       = $this-&gt;span;
+        $tokens     = token_get_all($this->_source);
+        $manual     = $this->manual;
+        $span       = $this->span;
         $stringflag = false;
         $i          = 0;
         $out        = array();
         $out[$i]    = '';
 
         // Loop through each token
-        foreach ($tokens as $j =&gt; $token) {
+        foreach ($tokens as $j => $token) {
             // Single char
             if (is_string($token)) {
 
                 // Entering or leaving a quoted string
-                if ($token === '&quot;' &amp;&amp; $tokens[$j - 1] !== '\\') {
+                if ($token === '"' && $tokens[$j - 1] !== '\\') {
                     $stringflag = !$stringflag;
-                    $out[$i] .= sprintf($span, $this-&gt;highlight['string'], $token);
+                    $out[$i] .= sprintf($span, $this->highlight['string'], $token);
                 } else {
                     // Skip token2color check for speed
-                    $out[$i] .= sprintf($span, $this-&gt;highlight['keyword'], htmlspecialchars($token));
+                    $out[$i] .= sprintf($span, $this->highlight['keyword'], htmlspecialchars($token));
 
                     // Heredocs behave strangely
                     list($tb) = isset($tokens[$j - 1]) ? $tokens[$j - 1] : false;
@@ -234,23 +234,23 @@ class PHP_Highlight
             // Make the value safe
             $value = htmlspecialchars($value);
             $value = str_replace(
-                        array_keys($this-&gt;replace),
-                        array_values($this-&gt;replace),
+                        array_keys($this->replace),
+                        array_values($this->replace),
                         $value);
 
             // Process
-            if ($value === &quot;\n&quot;) {
+            if ($value === "\n") {
                 // End this line and start the next
                 $out[++$i] = '';
             } else {
                 // Function linking
-                if ($funcref === true &amp;&amp; $token === T_STRING) {
+                if ($funcref === true && $token === T_STRING) {
                     // Look ahead 1, look ahead 2, and look behind 3
                     // For a function we expect T_FUNCTION T_STRING [T_WHITESPACE] (
-                    if ((isset($tokens[$j + 1]) &amp;&amp; $tokens[$j + 1] === '(' ||
-                        isset($tokens[$j + 2]) &amp;&amp; $tokens[$j + 2] === '(') &amp;&amp;
-                        isset($tokens[$j - 3][0]) &amp;&amp; $tokens[$j - 3][0] !== T_FUNCTION
-                        &amp;&amp; function_exists($value)) {
+                    if ((isset($tokens[$j + 1]) && $tokens[$j + 1] === '(' ||
+                        isset($tokens[$j + 2]) && $tokens[$j + 2] === '(') &&
+                        isset($tokens[$j - 3][0]) && $tokens[$j - 3][0] !== T_FUNCTION
+                        && function_exists($value)) {
 
                         // Insert the manual link
                         $value = sprintf($manual, $value, $value);
@@ -258,22 +258,22 @@ class PHP_Highlight
                 }
 
                 // Explode token block
-                $lines = explode(&quot;\n&quot;, $value);
-                foreach ($lines as $jj =&gt; $line) {
+                $lines = explode("\n", $value);
+                foreach ($lines as $jj => $line) {
                     $line = trim($line);
                     if ($line !== '') {
                         // Uncomment for debugging
                         //$out[$i] .= token_name($token);
 
                         // Check for plaintext
-                        if ($blocks === true &amp;&amp; $token === T_INLINE_HTML) {
-                            $this-&gt;_plaintextkeys[] = $i;
+                        if ($blocks === true && $token === T_INLINE_HTML) {
+                            $this->_plaintextkeys[] = $i;
                             $out[$i] .= $line;
                         } else {
                             // Highlight encased strings
                             $colour = ($stringflag === true) ?
-                                $this-&gt;highlight['string'] :
-                                $this-&gt;_token2color($token);
+                                $this->highlight['string'] :
+                                $this->_token2color($token);
                             $out[$i] .= sprintf($span, $colour, $line);
                         }
                     }
@@ -293,7 +293,7 @@ class PHP_Highlight
 
     /**
      * Convert the source to an ordered list.
-     * Each line is wrapped in &lt;li&gt; tags.
+     * Each line is wrapped in <li> tags.
      *
      * @access  public
      * @param   bool      $return    Return rather than print the results
@@ -304,28 +304,28 @@ class PHP_Highlight
     function toList($return = false, $funcref = true, $blocks = true)
     {
         // Ensure source has been loaded
-        if ($this-&gt;_source == false) {
+        if ($this->_source == false) {
             return false;
         }
 
         // Format list
-        $source = $this-&gt;toArray($funcref, $blocks);
-        $out = &quot;&lt;ol&gt;\n&quot;;
-        foreach ($source as $i =&gt; $line) {
-            $out .= &quot;    &lt;li&gt;&quot;;
+        $source = $this->toArray($funcref, $blocks);
+        $out = "<ol>\n";
+        foreach ($source as $i => $line) {
+            $out .= "    <li>";
 
             // Some extra juggling for lines which are not code
             if (empty($line)) {
-                $out .= '&amp;nbsp;';
-            } elseif ($blocks === true &amp;&amp; in_array($i, $this-&gt;_plaintextkeys)) {
+                $out .= '&nbsp;';
+            } elseif ($blocks === true && in_array($i, $this->_plaintextkeys)) {
                 $out .= $line;
             } else {
-                $out .= &quot;&lt;code&gt;$line&lt;/code&gt;&quot;;
+                $out .= "<code>$line</code>";
             }
 
-            $out .= &quot;&lt;/li&gt;\n&quot;;
+            $out .= "</li>\n";
         }
-        $out .= &quot;&lt;/ol&gt;\n&quot;;
+        $out .= "</ol>\n";
 
         if ($return === true) {
             return $out;
@@ -337,7 +337,7 @@ class PHP_Highlight
 
     /**
      * Convert the source to formatted HTML.
-     * Each line ends with &lt;br /&gt;.
+     * Each line ends with <br />.
      *
      * @access  public
      * @param   bool      $return       Return rather than print the results
@@ -349,29 +349,29 @@ class PHP_Highlight
     function toHtml($return = false, $linenum = false, $format = null, $funcref = true)
     {
         // Ensure source has been loaded
-        if ($this-&gt;_source == false) {
+        if ($this->_source == false) {
             return false;
         }
 
         // Line numbering
-        if ($linenum === true &amp;&amp; $format === null) {
-            $format = '&lt;span&gt;%02d&lt;/span&gt; ';
+        if ($linenum === true && $format === null) {
+            $format = '<span>%02d</span> ';
         }
 
         // Format code
-        $source = $this-&gt;toArray($funcref);
-        $out = &quot;&lt;code&gt;\n&quot;;
-        foreach ($source as $i =&gt; $line) {
+        $source = $this->toArray($funcref);
+        $out = "<code>\n";
+        foreach ($source as $i => $line) {
             $out .= '    ';
 
             if ($linenum === true) {
                 $out .= sprintf($format, $i);
             }
 
-            $out .= empty($line) ? '&amp;nbsp;' : $line;
-            $out .= &quot;&lt;br /&gt;\n&quot;;
+            $out .= empty($line) ? '&nbsp;' : $line;
+            $out .= "<br />\n";
         }
-        $out .= &quot;&lt;/code&gt;\n&quot;;
+        $out .= "</code>\n";
 
         if ($return === true) {
             return $out;
@@ -383,9 +383,9 @@ class PHP_Highlight
 
     /**
      * Convert the source to formatted HTML blocks.
-     * Each line ends with &lt;br /&gt;.
+     * Each line ends with <br />.
      *
-     * This method ensures only PHP is between &lt;&lt;code&gt;&gt; blocks.
+     * This method ensures only PHP is between <<code>> blocks.
      *
      * @access  public
      * @param   bool      $return       Return rather than print the results
@@ -398,30 +398,30 @@ class PHP_Highlight
     function toHtmlBlocks($return = false, $linenum = false, $format = null, $reset = true, $funcref = true)
     {
         // Ensure source has been loaded
-        if ($this-&gt;_source == false) {
+        if ($this->_source == false) {
             return false;
         }
 
         // Default line numbering
-        if ($linenum === true &amp;&amp; $format === null) {
-            $format = '&lt;span&gt;%03d&lt;/span&gt; ';
+        if ($linenum === true && $format === null) {
+            $format = '<span>%03d</span> ';
         }
 
         // Init
-        $source     = $this-&gt;toArray($funcref, true);
+        $source     = $this->toArray($funcref, true);
         $out        = '';
         $wasplain   = true;
         $k          = 0;
 
         // Loop through each line and decide which block to use
-        foreach ($source as $i =&gt; $line) {
+        foreach ($source as $i => $line) {
             // Empty line
             if (empty($line)) {
                 if ($wasplain === true) {
-                    $out .= '&amp;nbsp;';
+                    $out .= '&nbsp;';
                 } else {
-                    if (in_array($i+1, $this-&gt;_plaintextkeys)) {
-                        $out .= &quot;&lt;/code&gt;\n&quot;;
+                    if (in_array($i+1, $this->_plaintextkeys)) {
+                        $out .= "</code>\n";
 
                         // Reset line numbers
                         if ($reset === true) {
@@ -437,9 +437,9 @@ class PHP_Highlight
                 }
 
             // Plain text
-            } elseif (in_array($i, $this-&gt;_plaintextkeys)) {
+            } elseif (in_array($i, $this->_plaintextkeys)) {
                 if ($wasplain === false) {
-                    $out .= &quot;&lt;/code&gt;\n&quot;;
+                    $out .= "</code>\n";
 
                     // Reset line numbers
                     if ($reset === true) {
@@ -448,12 +448,12 @@ class PHP_Highlight
                 }
 
                 $wasplain = true;
-                $out .= str_replace('&amp;nbsp;', ' ', $line);
+                $out .= str_replace('&nbsp;', ' ', $line);
 
             // Code
             } else {
                 if ($wasplain === true) {
-                    $out .= &quot;&lt;code&gt;\n&quot;;
+                    $out .= "<code>\n";
                 }
                 $wasplain = false;
 
@@ -465,12 +465,12 @@ class PHP_Highlight
                 $out .= $line;
             }
 
-            $out .= &quot;&lt;br /&gt;\n&quot;;
+            $out .= "<br />\n";
         }
 
         // Add final code tag
         if ($wasplain === false) {
-            $out .= &quot;&lt;/code&gt;\n&quot;;
+            $out .= "</code>\n";
         }
 
         // Output method
@@ -493,17 +493,17 @@ class PHP_Highlight
     {
         switch ($token):
             case T_CONSTANT_ENCAPSED_STRING:
-                return $this-&gt;highlight['string'];
+                return $this->highlight['string'];
                 break;
 
             case T_INLINE_HTML:
-                return $this-&gt;highlight['html'];
+                return $this->highlight['html'];
                 break;
 
             case T_COMMENT:
             case T_DOC_COMMENT:
             case T_ML_COMMENT:
-                return $this-&gt;highlight['comment'];
+                return $this->highlight['comment'];
                 break;
 
             case T_ABSTRACT:
@@ -574,14 +574,14 @@ class PHP_Highlight
             case T_UNSET_CAST:
             case T_VAR:
             case T_WHILE:
-                return $this-&gt;highlight['keyword'];
+                return $this->highlight['keyword'];
                 break;
 
             case T_CLOSE_TAG:
             case T_OPEN_TAG:
             case T_OPEN_TAG_WITH_ECHO:
             default:
-                return $this-&gt;highlight['default'];
+                return $this->highlight['default'];
 
         endswitch;
     }
@@ -595,21 +595,21 @@ Usage is very easy, for example:
 {% highlight php %}
 <?php
 $h = new PHP_Highlight;
-$h-&gt;loadFile(__FILE__);
+$h->loadFile(__FILE__);
  
 // Print source as an array
-echo &quot;&lt;h3&gt;As an array&lt;/h3&gt;&quot;;
-echo &quot;&lt;pre&gt;&quot;;
-print_r($h-&gt;toArray());
-echo &quot;&lt;/pre&gt;&quot;;
+echo "<h3>As an array</h3>";
+echo "<pre>";
+print_r($h->toArray());
+echo "</pre>";
  
 // Print source as an ordered list
-echo &quot;&lt;h3&gt;As an ordered list&lt;/h3&gt;&quot;;
-$h-&gt;toList(false);
+echo "<h3>As an ordered list</h3>";
+$h->toList(false);
  
 // Print source as a html block
-echo &quot;&lt;h3&gt;As normal HTML&lt;/h3&gt;&quot;;
-$h-&gt;toHtml(false);
+echo "<h3>As normal HTML</h3>";
+$h->toHtml(false);
 ?>
 {% endhighlight %}
 
