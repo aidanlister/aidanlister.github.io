@@ -1,0 +1,22 @@
+{% include header.html %}
+
+<main id="content" role="main">
+  <div id="post" class="container">
+    <h3>{{ page.title }}</h3>
+    <div class="meta">
+      Posted {{ page.date|date:"%-d %B %Y" }}
+    </div>
+    <div class="body">
+        {{ content }}
+    </div>
+  </div>
+
+  <div id="comments" class="container">
+    <h6>Comments</h6>
+    <div class="inner">
+    {% include disqus.html %}
+    </div>
+  </div>
+</main>
+
+{% include footer.html %}
