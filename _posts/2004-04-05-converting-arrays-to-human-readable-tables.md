@@ -2,6 +2,8 @@
 layout: post
 title: Converting arrays to human readable tables
 section: developer
+summary: |
+    <code>array2table()</code> allows you to quickly display the contents of an array as a HTML table. It can also recursively display data for nested arrays.
 ---
 This function allows you to quickly display the contents of an array as a HTML table. It can also recursively display data for nested arrays.
 

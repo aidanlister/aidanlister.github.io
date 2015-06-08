@@ -2,6 +2,8 @@
 layout: post
 title: Calculating a directories size in PHP
 section: developer
+summary: |
+    <code>dirsize</code> provides a heavily optimised method for calculating the size of large directories.
 ---
 This function provides a heavily optimised method for calculating the size of large directories.
 

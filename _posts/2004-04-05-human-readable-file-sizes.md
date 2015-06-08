@@ -2,6 +2,8 @@
 layout: post
 title: Human readable file sizes
 section: developer
+summary: |
+    <code>size_readable()</code> converts a number of bytes into human readable form.
 ---
 A very common task is converting a number of bytes into something for human digestion. This function supports both a maximum unit, both SI prefixes (base 10) and binary prefixes (base 2), and customised return strings.
 

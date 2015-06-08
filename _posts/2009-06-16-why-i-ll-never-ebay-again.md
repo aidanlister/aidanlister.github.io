@@ -2,6 +2,10 @@
 layout: post
 title: Why I'll never eBay again
 section: traveler
+summary: |
+    I listed my old Macbook Pro 15" laptop for sale on eBay today. I paid my fees. I reviewed my add. I was happy for about 6 minutes, until I received a barrage of emails notifying me my account was suspended for "abuse" of their terms and conditions.
+    
+    My account was locked down, leaving me unable to even log in to respond to the situation! All my bids on other items were revoked. Is this what online selling has become? If so, no thanks.
 ---
 I listed my old Macbook Pro 15" laptop for sale on eBay today. I paid my fees. I reviewed my add. I was happy for about 6 minutes, until I received the following barrage of emails:
 <blockquote>-----------------------------------------------------------------

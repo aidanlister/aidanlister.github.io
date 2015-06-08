@@ -2,6 +2,8 @@
 layout: post
 title: Quick and easy random string generation
 section: developer
+summary: |
+    <code>str_rand()</code> provides a quick wrapper for customised random string output.
 ---
 Generating a random string is an incredibly common task, this function provides quick string generation with four available output types: alpha, numeric, alphanum and hexadec.
 

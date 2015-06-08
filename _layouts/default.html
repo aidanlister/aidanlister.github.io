@@ -1,7 +1,13 @@
 {% include header.html %}
+<div class="main-container container">
+  <div class="row">
+    <div id="navbar" class="col-sm-3">
+      {% include navbar.html %}
+    </div>
 
-<main id="content" role="main">
-  {{ content }}
-</main>
-
+    <main id="content" class="col-sm-9" role="main">
+      {{ content }}
+    </main>
+  </div>
+</div>
 {% include footer.html %}

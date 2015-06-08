@@ -2,6 +2,8 @@
 layout: post
 title: Recursively creating directory structures
 section: developer
+summary: |
+    <code>mkdirr</code> allows you to create whole directory trees independent of what folders exist in the path.
 ---
 Every now and then you want to create a deep directory structure on the fly. This function allows you to create whole directory trees independent of what folders exist in the path.
 

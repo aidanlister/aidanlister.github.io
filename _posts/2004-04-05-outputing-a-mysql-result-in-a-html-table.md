@@ -2,6 +2,8 @@
 layout: post
 title: Outputing a MySQL result in a HTML table
 section: developer
+summary: |
+    <code>mysql_draw_table()</code> outputs a MySQL result set as a HTML table.
 ---
 When debugging a queryset without the luxuries of Sequel Pro or PHPMyAdmin, sometimes it's handy to dump a resultset straight into your page as a HTML table.
 

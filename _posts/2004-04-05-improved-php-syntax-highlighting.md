@@ -2,6 +2,8 @@
 layout: post
 title: Improved PHP syntax highlighting
 section: developer
+summary: |
+    <code>PHP_Highlight</code> uses PHP's built in tokenizer to provide reliable syntax highlighting for PHP code when server-side highlighting is required.
 ---
 PHP_Highlight uses PHP's built in tokenizer to provide reliable syntax highlighting for PHP code when server-side highlighting is required.
 

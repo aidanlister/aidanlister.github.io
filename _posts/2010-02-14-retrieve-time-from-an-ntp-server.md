@@ -2,6 +2,8 @@
 layout: post
 title: Retrieve time from an NTP server 
 section: developer
+summary: |
+    <code>ntp_time()</code> allows you to quickly retrieve the time from an NTP server as a unix timestamp.
 ---
 There's a lot of code floating around the internet to communicate with NTP servers, unfortunately none of the ones I found actually worked. Here's a low level implementation:
 

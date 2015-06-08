@@ -2,6 +2,16 @@
 layout: post
 title: Creating a community in five minutes with CakePHP
 section: developer
+summary: |
+    CakePHP's automatic hashing makes things a lot harder than they need to be, and simple tasks (e.g. a registration page) become annoyingly difficult.
+    
+    Here, we build a complete community based website in five minutes using Cake best practices, with the following features:
+    <ul>
+        <li>Account registration</li>
+        <li>Login and logout</li>
+        <li>Account management page</li>
+        <li>Password retrieval</li>
+    </ul>
 ---
 CakePHP's automatic hashing makes things a lot harder than they need to be, and simple tasks (e.g. a registration page) become annoyingly difficult.
 

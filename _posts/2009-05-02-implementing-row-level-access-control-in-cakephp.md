@@ -2,6 +2,8 @@
 layout: post
 title: Implementing row level access control in CakePHP
 section: developer
+summary: |
+    The ACL Component in CakePHP is very powerful and can be used to solve a wide variety of access control problems. In this tutorial, we provide a step-by-step guide for implementing row level access control to a model.
 ---
 The ACL Component in CakePHP is very powerful and can be used to solve a wide variety of access control problems. In this tutorial, we provide a step-by-step guide for implementing row level access control to a model. We will assume at least a basic understanding of ACL and Auth in CakePHP.
 

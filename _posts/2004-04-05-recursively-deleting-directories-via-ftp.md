@@ -2,6 +2,8 @@
 layout: post
 title: Recursively deleting directories via FTP
 section: developer
+summary: |
+    <code>ftp_rmdirr()</code> allows the deletion of whole directory trees on remote servers via FTP.
 ---
 A very common task involves deleting a directory on a remote FTP server - unfortunately if this directory contains any files or folders it gets complicated quickly.
 

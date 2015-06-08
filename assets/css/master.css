@@ -1,3 +1,117 @@
 #comments { margin-top: 4em; margin-bottom: 2em; }
 #comments .inner { padding: 4em; background-color: #fafafa; border-top: 1px solid #ccc; }
 #content .meta { font-style: italic; margin-bottom: 1em; color: #666; }
+
+h2 { font-size: 14px; }
+h3 { font-size: 13px; }
+h4 { font-size: 12px; }
+
+body {
+  font-size: 12px;
+  background: url('../img/aidantikal.jpg') no-repeat top center;
+  background-size: cover;
+  background-attachment: fixed !important;
+  background-color: #ccc;
+  font-family: 'Roboto Slab', serif;
+}
+
+
+.navbar-default { font-family: 'Open Sans', sans-serif; background-color: inherit; border: none; margin: 0; }
+.navbar-default ul { list-style-type: none; padding: 0; margin-bottom: 0; ´}
+.navbar-default ul li { height: 39.5px; }
+.navbar-default ul li.home {
+  height: 158px;
+  width: 158px;
+}
+.navbar-default ul li.home a {
+  margin-left: 0;
+  font-size: 40px;
+  padding: 15px 25px;
+  line-height: 43px;
+  height: 158px;
+  background-color: rgba(91, 143, 164, .9);
+}
+.navbar-default ul li.home a .suffix { color: #cddde6; }
+.navbar-default ul li.developer a,
+.section-developer #content .main-content { background-color: rgba(134, 185, 206, .9); }
+.navbar-default ul li.entrepreneur a,
+.section-entrepreneur #content .main-content { background-color: rgba(153, 194, 212, .9); }
+.navbar-default ul li.consultant a,
+.section-consultant #content .main-content { background-color: rgba(175, 208, 225, .9); }
+.navbar-default ul li.traveler a,
+.section-traveler #content .main-content { background-color: rgba(199, 219, 230, .9); }
+.navbar-default ul li a {
+  color: #fff;
+  font-size: 18px;
+  display: block;
+  padding: 7px 20px 8px;
+}
+.navbar-default ul li a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+#sidebar .sidebar-wrapper { background-color: #333; padding: 15px; color: #fff; }
+#sidebar .sidebar-wrapper a { color: #fff; text-decoration: underline; }
+#sidebar .sidebar-wrapper h2 { margin: 0 0 20px; color: #72abc4; }
+#sidebar .sidebar-wrapper h3 { margin-top: 10px; margin-bottom: 5px; font-size: 13px; font-weight: normal; }
+#sidebar .sidebar-wrapper h3 a { text-decoration: none; }
+#sidebar .sidebar-wrapper .post { border-top: 1px solid #72abc4; margin-top: 15px; }
+#sidebar .sidebar-wrapper .post .date { margin-bottom: 10px; }
+
+#content .main-content {
+  padding: 25px;
+}
+#content .section-description {
+  font-size: 18px;
+}
+#content h2, h3 { color: #fff; font-weight: 600; }
+#content h3 { font-size: 14px; margin-top: 10px; }
+#content .featured-image { margin-bottom: 20px; }
+#content .project { border-top: 1px solid black; margin-top: 20px; }
+
+.section-home .main-content {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media(max-width: 767px) {
+  body { padding-top: 80px; }
+  header,
+  #content { margin: 0 -15px; }
+  .navbar-default ul li.home { float: left; }
+  .navbar-default ul li a { margin-left: 158px; }
+  .section-home .main-container { background-color: rgba(11, 11, 11, .3) }
+}
+@media(min-width: 768px) {
+  #navbar { padding-right: 0; }
+  #content { padding-left: 0; margin-top: 158px; }
+  .navbar-default ul li { width: 158px; }
+}
+@media(min-width: 768px) and (max-width: 991px) {
+  #navbar { padding-left: 0; width: 21%; }
+  #content { padding-right: 0; width: 79%; }
+}
+@media(min-width: 991px) {
+  #navbar { width: 22%; }
+  #content { width: 78%; margin-top: 198px; }
+  .navbar-default ul li.home,
+  .navbar-default ul li.home a { width: 198px; height: 198px; }
+  .navbar-default ul li.home a { font-size: 48px; line-height: 48px; padding: 22px 32px; }
+  .navbar-default ul li,
+  .navbar-default ul li a { width: 198px; }
+  .navbar-default ul li a { padding: 10px 32px; }
+  .navbar-default ul li { height: 45px; }
+}
+@media(min-width: 1200px) {
+  #navbar { width: 19%; }
+  #content { width: 81%; margin-top: 207px; }
+  .navbar-default ul li.home,
+  .navbar-default ul li.home a { width: 207px; height: 207px; }
+  .navbar-default ul li.home a { font-size: 50px; line-height: 50px; padding: 22px 35px; }
+  .navbar-default ul li,
+  .navbar-default ul li a { width: 207px; }
+  .navbar-default ul li a { padding: 13px 35px 12px; }
+  .navbar-default ul li { height: 50px; }
+}

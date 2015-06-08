@@ -2,6 +2,8 @@
 layout: post
 title: Dealing with human readable network addresses
 section: developer
+summary: |
+    <code>network_expand_range()</code> and <code>network_compact_range()</code> allow the expansion and contraction of IP addresses or ranges as human readable input.
 ---
 Let's say we need to build a list of network addresses to whitelist access to a restricted area, or blacklist a troublesome spammer. It's handy to be able to enter data in a variety of formats, including hostnames, IP addresses, and IP ranges.
 

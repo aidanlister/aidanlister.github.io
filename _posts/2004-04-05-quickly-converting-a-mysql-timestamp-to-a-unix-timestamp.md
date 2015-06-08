@@ -2,6 +2,8 @@
 layout: post
 title: Quickly converting a MySQL timestamp to a Unix Timestamp
 section: developer
+summary: |
+    <code>mysql2unixtime()</code> converts MySQL timestamps to unix timestamps
 ---
 A commonly asked question is converting MySQL timestamps into unix timestamps. Although it's usually easiest to do this on the mysql server with <code>UNIX_TIMESTAMP()</code>, you can achieve the same thing with this function.
 

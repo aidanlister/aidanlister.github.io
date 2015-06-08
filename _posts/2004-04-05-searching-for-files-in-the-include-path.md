@@ -2,6 +2,8 @@
 layout: post
 title: Searching for files in the include_path
 section: developer
+summary: |
+    <code>file_exists_incpath()</code> checks whether a file exists anywhere along your include_path.
 ---
 Sometimes, especially when doing lazy-loading (or very lazy loading...), it's handly to know whether a file exists anywhere along your include_path.
 

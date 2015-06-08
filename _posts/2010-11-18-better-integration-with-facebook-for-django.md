@@ -2,6 +2,8 @@
 layout: post
 title: Better integration with Facebook for Django
 section: developer
+summary: |
+    I have released <a href="https://github.com/aidanlister/django-facebook">django-facebook</a> which offers total and seamless integration with Facebook for your social apps.
 ---
 I've really been enjoying working with <a href="http://djangoproject.com/">Django</a> for the last few months, it's an incredibly powerful and elegant framework and I sorely wish there was an equivalent in PHP.
 

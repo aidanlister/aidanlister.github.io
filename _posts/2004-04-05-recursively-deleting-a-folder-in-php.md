@@ -2,6 +2,8 @@
 layout: post
 title: Recursively deleting a folder in PHP
 section: developer
+summary: |
+    <code>rmdirr()</code> allows the deleting of a folder, along with the folders contents.
 ---
 PHP's <code>rmdir</code> function does not allow the deletion of a folder if it is not empty. The <code>rmdirr</code> function below allows the removal of a folder and all its contents recursively, as would <code>rm -rf</code> on linux.
 

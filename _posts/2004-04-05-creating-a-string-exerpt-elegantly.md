@@ -2,6 +2,8 @@
 layout: post
 title: Creating a string exerpt elegantly
 section: developer
+summary: |
+    <code>str_chop()</code> provides a number of options for trimming long text into something suitable for display.
 ---
 Shortening a chunk of text into something suitable for display is an exceptionally common task, this function provides a number of options for shortening text and URLs.
 

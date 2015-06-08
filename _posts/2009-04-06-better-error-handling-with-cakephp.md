@@ -2,6 +2,10 @@
 layout: post
 title: Better Error Handling with CakePHP
 section: developer
+summary: |
+    CakePHP is a wonderful framework, but it really drops the ball when it comes to practical error management. In production environments (DEBUG = 0), only 404 or 500 errors are displayed to the user, and no errors are written to the log files.
+    
+    To solve these two problems we override php's error handler to enable production error logging, and cake's error handler to allow forward facing error pages.
 ---
 CakePHP is a wonderful framework, but it really drops the ball when it comes to practical error management. In production environments (DEBUG = 0), only 404 or 500 errors are displayed to the user, and no errors are written to the log files.
 

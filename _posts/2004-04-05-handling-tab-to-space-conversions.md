@@ -2,6 +2,8 @@
 layout: post
 title: Handling tab to space conversions
 section: developer
+summary: |
+    <code>tab2space()</code> converts tabs to the appropriate amount of spaces to preserving formatting.
 ---
 When outputting code in a browser, or automatically formatting someone else's code, it's handy to be able to accurately convert tabs to spaces.
 

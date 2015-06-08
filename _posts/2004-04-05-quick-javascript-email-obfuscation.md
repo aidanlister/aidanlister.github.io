@@ -2,6 +2,8 @@
 layout: post
 title: Quick JavaScript email obfuscation
 section: developer
+summary: |
+    <code>mail_obfuscate</code> allows you to quickly obfuscate an email address in JavaScript to prevent spambots harvesting the address.
 ---
 <p>There are many methods to quickly obscure an email address from spam harvesters, this approach relies on the fact that most email harvesters won't understand JavaScript.</p>
 

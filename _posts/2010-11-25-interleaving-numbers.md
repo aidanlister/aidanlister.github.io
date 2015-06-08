@@ -2,6 +2,8 @@
 layout: post
 title: Interleaving numbers 
 section: developer
+summary: |
+    <code>interleave()</code> allows you to quickly calculate the Morton Interleave of two numbers.
 ---
 When you have two numbers that need to be indexed together for speedy lookups there are a variety of mechanisms that can be used, a fast and efficient mechanism is called the <a href="http://www.codexon.com/posts/morton-codes">Morton Interleave</a>.
 

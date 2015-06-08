@@ -2,6 +2,8 @@
 layout: post
 title: Converting HTML colours from HEX to RGB
 section: developer
+summary: |
+    <code>hex2rgb()</code> converts HTML hexadecimal colour codes into their RGB equivalent
 ---
 HTML colours are usually represented as a 6 character hexadecimal string. To convert to an RGB value, you can use this function.
 

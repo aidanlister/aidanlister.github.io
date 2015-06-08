@@ -2,6 +2,8 @@
 layout: post
 title: Recursively copying directories in PHP
 section: developer
+summary: |
+    <code>copyr</code> can be used to copy a file, or recursively copy a folder and its contents.
 ---
 This function allows you to copy an entire directory tree recursively. Symlinks on both operating systems are also accommodated for.
 

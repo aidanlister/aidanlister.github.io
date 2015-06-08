@@ -2,6 +2,8 @@
 layout: post
 title: Highlighting a search string in HTML text
 section: developer
+summary: |
+    <code>str_highlight()</code> provides a variety of text highlighting options for plaintext or HTML strings.
 ---
 Several hundred user notes on the str_replace page later, and we have a function that provides a variety of text highlighting options for plaintext or HTML strings.
 

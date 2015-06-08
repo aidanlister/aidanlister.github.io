@@ -2,6 +2,8 @@
 layout: post
 title: Executing a callback for all files in a directory
 section: developer
+summary: |
+    <code>directory_walk</code> allows running an arbitrary callback on all files in a deep directory structure.
 ---
 A common question when dealing with deep directory structures concerns how a function can be applied recursively to all the files in the target directory, regardless of the depth. This function, <code>directory_walk</code>, builds an internal stack (uses no recursion) and iteratively applies the user supplied callback providing a fast and flexible approach.
 

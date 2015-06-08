@@ -1,3 +1,2 @@
 exclude: [".gitignore", "*.sublime-*"]
 permalink: /:year/:month/:title/
-

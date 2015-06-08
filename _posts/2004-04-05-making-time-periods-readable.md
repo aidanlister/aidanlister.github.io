@@ -2,6 +2,8 @@
 layout: post
 title: Making time periods readable
 section: developer
+summary: |
+    <code>time_duration()</code> is a flexible function for making time periods readable.
 ---
 This is a flexible function for making time periods readable.
 

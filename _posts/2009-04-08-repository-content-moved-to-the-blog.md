@@ -2,6 +2,8 @@
 layout: post
 title: Repository content moved to the blog
 section: developer
+summary: |
+    I have just finished moving all of my repository content to separate posts in WordPress. I also decided to get a little tricky and manually imported all of the old comments into WordPress too.
 ---
 I have just finished moving all of my repository content to separate posts in WordPress. I also decided to get a little tricky and manually imported all of the old comments into WordPress too.
 

@@ -2,6 +2,8 @@
 layout: post
 title: Bulk package tracking for Australia Post with Google Docs
 section: developer
+summary: |
+    We use Google Docs and the <code>importXML</code> function to effectively track Australia Post parcel delivery.
 ---
 One of my companies sells <a href="https://www.kigu.me">animal onesies</a> (buy one, because they are awesome), and it imports a good quantity of goods into Australia via EMS.
 

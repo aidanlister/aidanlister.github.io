@@ -2,6 +2,8 @@
 layout: post
 title: Cycling between strings, a novel implementation
 section: developer
+summary: |
+    <code>Cycle</code> provides a novel way to iterate through an array. This is commonly used for zebra-striping tables.
 ---
 When outputting a table, a common task is to alternate the row colours to give a zebra effect - an effect commonly said (though debated) to increase readability.
 

@@ -2,6 +2,8 @@
 layout: post
 title: Viewing binary data as a hexdump in PHP
 section: developer
+summary: |
+    <code>hexdump()</code> allows you to dump a binary data stream into a human-friendly format.
 ---
 When dealing with binary data it's always helpful to see exactly what PHP sees - this function allows you to dump a binary data stream into a human-friendly format.
 
