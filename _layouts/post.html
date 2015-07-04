@@ -1,22 +1,35 @@
 {% include header.html %}
 
-<main id="content" role="main">
-  <div id="post" class="container">
-    <h3>{{ page.title }}</h3>
-    <div class="meta">
-      Posted {{ page.date|date:"%-d %B %Y" }}
+<div class="main-container container">
+  <div class="row">
+    <div id="navbar" class="col-sm-3">
+      {% include navbar.html %}
     </div>
-    <div class="body">
-        {{ content|markdownify }}
-    </div>
-  </div>
 
-  <div id="comments" class="container">
-    <h6>Comments</h6>
-    <div class="inner">
-    {% include disqus.html %}
-    </div>
+    <main id="content" class="col-sm-9" role="main">
+      <div class="main-content">
+
+        <div class="post-content">
+          <h1>{{ page.title }}</h1>
+          <div class="meta">
+            Posted {{ page.date|date:"%-d %B %Y" }}
+          </div>
+
+          {{ content|markdownify }}
+        </div>
+
+      </div>
+
+      <aside id="comments">
+        <div class="inner">
+          {% include disqus.html %}
+        </div>
+      </aside>
+    </main>
+
   </div>
-</main>
+</div>
+
+
 
 {% include footer.html %}
