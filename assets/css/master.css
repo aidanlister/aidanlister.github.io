@@ -1,3 +1,5 @@
+.section-consultant li em { font-weight: bold; }
+
 #comments { margin-top: 4em; margin-bottom: 2em; }
 #comments .inner { padding: 4em; background-color: #fafafa; border-top: 1px solid #ccc; }
 #content .meta { font-style: italic; margin-bottom: 1em; color: #666; }
