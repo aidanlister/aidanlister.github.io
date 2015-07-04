@@ -14,7 +14,7 @@ h3 a:hover { color: white; text-decoration: underline; }
 
 body {
   font-size: 14px;
-  background: url('../img/aidantikal.jpg') no-repeat top center;
+  background: url('http://res.cloudinary.com/trottin/image/upload/h_1200/v1/trottin/media/trips/00001/2013-01-02.jpg') no-repeat top center;
   background-size: cover;
   background-attachment: fixed !important;
   background-color: #ccc;
