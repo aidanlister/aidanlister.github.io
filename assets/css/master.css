@@ -21,30 +21,19 @@ body {
   background-color: black;
   font-family: 'Open Sans', serif;
 }
-body::after {
-  content: "";
-  background-size: cover;
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-}
-body.section-home::after {
+body.section-home {
   background-image: url('/assets/img/backgrounds/sanblas.jpg');
 }
-body.section-developer::after {
+body.section-developer {
   background-image: url('/assets/img/backgrounds/kashmir.jpg');
 }
-body.section-traveler::after  {
+body.section-traveler {
   background-image: url('/assets/img/backgrounds/guyana.jpg');
 }
-body.section-entrepreneur::after  {
+body.section-entrepreneur {
   background-image: url('/assets/img/backgrounds/kigumeflip.jpg');
 }
-body.section-consultant::after  {
+body.section-consultant {
   background-image: url('/assets/img/backgrounds/elcastillo.jpg');
 }
 
