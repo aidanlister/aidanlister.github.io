@@ -103,7 +103,7 @@ body.section-consultant {
 }
 
 /* Developer */
-.section-developer #sidebar .featured-image { height: 50px; }
+.section-developer #sidebar .featured-image { height: 50px; margin-top: 10px; margin-bottom: 10px; }
 
 .section-developer #content #main h3 { font-weight: 200; font-size: 16px; }
 .section-developer #content #main h3 a { }
