@@ -10,21 +10,27 @@ I recently purchased a new Macbook Air and had forgotten all of the various step
 Resorting to my old friend <a href="http://macports.com">MacPorts</a>, it took me a few tries and plenty of googling to get up and running. To save you some time should you be in a similar position, here are the commands you will need;
 
 The steps required install Python, easy_install, pip and virtualenv in Mac OSX Lion:
-<code>$ sudo port install python27
+{% highlight sh %}
+$ sudo port install python27
 $ sudo port select --set python python27
 $ sudo port install py27-distribute
 $ PYDIR=`which python`;
 $ echo "export PATH=`dirname $PYDIR`:\$PATH" >> ~/.profile
 $ source ~/.profile
 $ sudo easy_install -U pip
-$ sudo pip install -U virtualenv</code>
+$ sudo pip install -U virtualenv
+{% endhighlight %}
 
 There's a bit of magic in there to add pip and easy_install into your path, I found this solution to be nicer than symlinking them to your /usr/bin folder. Once this is done, you are ready to rock:
 
-<code>$ virtualenv --no-site-packages --distribute hooray</code>
+{% highlight sh %}
+$ virtualenv --no-site-packages --distribute hooray
+{% endhighlight %}
 
 Another reader has pointed out this alternative:
-<code>git clone https://github.com/gregglind/virtualenv.git
+{% highlight sh %}
+git clone https://github.com/gregglind/virtualenv.git
 cd virtualenv
 git checkout feature/install_name_tool
-sudo python setup.py install</code>
+sudo python setup.py install
+{% endhighlight %}

@@ -7,11 +7,9 @@ summary: |
 ---
 I was after a quick and easy way to generate a directory listing from an S3 bucket, but all of the scripts I found were horribly convoluted, and difficult to customise the resultant markup.
 
-With this jQuery plugin, you can provide your own markup function, or use the default one provided which will generate a listing like so:
+With this jQuery plugin, you can provide your own markup function, or use the default one provided which will generate a listing using UL.
 
-<img src="http://aidanlister.com/wp-content/uploads/2014/06/Screen-Shot-2014-06-10-at-10.00.27-pm.png" alt="S3 directory listing" width="100%" height="auto" class="aligncenter size-full wp-image-561" />
-
-[code language="js"]
+{% highlight js %}
 /**
  * jQuery Plugin: S3 Browser
  *
@@ -118,6 +116,6 @@ With this jQuery plugin, you can provide your own markup function, or use the de
         return this;
     };
 }( jQuery ));
-[/code]
+{% endhighlight %}
 
 You can <a href="https://github.com/aidanlister/jquery-s3browser">grab the code from Github</a> or on the <a href="http://plugins.jquery.com/s3browser/">jQuery plugins</a> website.
