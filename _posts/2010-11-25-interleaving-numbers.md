@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Interleaving numbers 
+title: Interleaving numbers
 section: developer
 summary: |
     <code>interleave()</code> allows you to quickly calculate the Morton Interleave of two numbers.
@@ -22,13 +22,13 @@ function interleave($x, $y) {
     $result = 0;
     $position = 0;
     $bit = 1;
- 
+
     while ($bit <= $x || $bit <= $y) {
         if ($bit & $x)
             $result |= 1 << (2*$position+1);
         if ($bit & $y)
             $result |= 1 << (2*$position);
- 
+
         $position += 1;
         $bit = 1 << $position;
     }

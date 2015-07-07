@@ -2,6 +2,8 @@
 layout: post
 title: Persisting the tab state in Bootstrap
 section: developer
+summary: |
+    A popular jQuery plugin to for deep-linking with Bootstrap tabs.
 ---
 <a href="http://getbootstrap.com/javascript/#tabs">Bootstrap tabs</a> are great, but not having the tab persisted between page navigations can be a little frustrating for end users.
 
@@ -15,7 +17,7 @@ There's a few things that need to be done in a complete solution:
 
 This was a bit much for a one liner, so I've made a simple jQuery plugin:
 
-[js]
+{% highlight js %}
 /**
  * jQuery Plugin: Sticky Tabs
  *
@@ -66,10 +68,12 @@ This was a bit much for a one liner, so I've made a simple jQuery plugin:
         return this;
     };
 }( jQuery ));
-[/js]
+{% endhighlight %}
 
 You can call the plugin like so:
 
-    <code>$('.nav-tabs-sticky').stickyTabs();</code>
+{% highlight js %}
+$('.nav-tabs-sticky').stickyTabs();
+{% endhighlight %}
 
 You can also find <a href="https://github.com/aidanlister/jquery-stickytabs">jquery.stickytabs.js</a> on GitHub or install via bower with <code>bower install jquery-stickytabs</code>.

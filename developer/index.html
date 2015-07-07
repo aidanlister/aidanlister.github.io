@@ -5,12 +5,13 @@ section: developer
 ---
 <section class="main-content">
   <div class="row">
-    <div class="col-sm-6">
+    <div id="main" class="col-sm-6">
       <h1>Developer</h1>
 
       <div class="section-description">
         <p class="lead">I have been an active web developer since 1999. I am proficient with dozens of languages but specialise in Python and PHP, and in a few different frameworks, namely Drupal and Django. I also enjoy the odd task in MIPS, MATLAB, C, or VHDL when required. I am a strong proponent of open source, web standards, and accessibility.</p>
 
+        <h2>Developer blog:</h2>
         {% for post in site.posts %}
           {% if post.section == 'developer' %}
             <div class="post">
@@ -36,7 +37,7 @@ section: developer
             </div>
             <h3><a href="https://github.com/freakboy3742/pyxero">PyXero</a></h3>
             <p>PyXero is the <a href="https://developer.xero.com/code-samples/libraries/python/">official library</a> for connecting to Xero with Python. It's primarily maintained by myself, and Russel Keith Magee of the Django foundation.</p>
-            <img class="featured-image img-responsive" src="/assets/img/xero.png" />
+            <img class="featured-image" src="/assets/img/xero.png" />
             <p>&raquo; <a href="https://github.com/freakboy3742/pyxero">See the project on github</a>.</p>
           </div>
 
@@ -50,28 +51,28 @@ section: developer
             A home for Python developers working with Facebook. We maintain two repositories on github:</p>
             <p><em>facebook-sdk</em> is a set of essential tools for working with Facebook in Python,</p>
             <p><em>django-facebook</em> is an extensible django plugin for building facebook integrated sites.</p>
-            <img class="featured-image img-responsive" src="/assets/img/facebook.png" />
+            <img class="featured-image" src="/assets/img/facebook.png" />
             <p>&raquo; <a href="https://github.com/pythonforfacebook/facebook-sdk">See the project on github</a>.</p>
           </div>
 
           <div class="project">
             <h3><a href="https://www.drupal.org/user/502018/">Drupal</a></h3>
             <p>Drupal is an open source content management platform powering millions of websites and applications. I've authored over 20 modules that are widely used throughout the Drupal ecosystem, collectively used across thousands of sites and registering over 120,000 downloads.</p>
-            <img class="featured-image img-responsive" src="/assets/img/drupal.png" />
+            <img class="featured-image" src="/assets/img/drupal.png" />
             <p>&raquo; <a href="https://www.drupal.org/user/502018/">See my projects on Drupal.org</a>.</p>
           </div>
 
           <div class="project">
             <h3><a href="https://www.drupal.org/user/502018/">PEAR</a></h3>
             <p>The PHP Extension and Application Repository (PEAR) was a central part of the PHP ecosystem before frameworks arrived on the scene. I authored several packages which were collectively downloaded over 350,000 times and powered many open source applications like Wordpress, Joomla, Drupal, and Wikipedia.</p>
-            <img class="featured-image img-responsive" src="/assets/img/pear.png" />
+            <img class="featured-image" src="/assets/img/pear.png" />
             <p>&raquo; <a href="https://www.drupal.org/user/502018/">See my projects on Drupal.org</a>.</p>
           </div>
 
           <div class="project">
             <h3>PHP.net</h3>
             <p>I was a noted author of the PHP documentation, and a notes maintainer for several years. I started using PHP3 just prior to PHP4's release, and contributed extensively to the PHP5 documentation when PHP5 was released.</p>
-            <img class="featured-image img-responsive" src="/assets/img/php.png" />
+            <img class="featured-image" src="/assets/img/php.png" />
             <p>&raquo; <a href="http://php.net/manual/en/preface.php">See the attribution</a> and my <a href="http://php.net/manual/en/function.array-multisort.php">favourite manual page</a>.</p>
           </div>
 

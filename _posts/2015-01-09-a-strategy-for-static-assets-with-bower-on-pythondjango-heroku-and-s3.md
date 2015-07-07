@@ -2,6 +2,8 @@
 layout: post
 title: A strategy for static assets with Bower on Python/Django, Heroku and S3
 section: developer
+summary: |
+    We look at best practices for managing your static assets on Heroku and S3 using Bower.
 ---
 The case for frontend package management is pretty strong. Once you’ve got jQuery, Bootstrap, half a dozen webcomponents and a few javascript libraries things are getting difficult to maintain and collecting static assets to S3 is taking 45 minutes.
 

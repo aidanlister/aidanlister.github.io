@@ -4,7 +4,7 @@ title: Drupal meets geolocation with Quova
 section: developer
 summary: |
     <a href="http://developer.quova.com">Quova</a> - the worlds largest geolocation provider - has sponsored the development of a suite of <a href="http://drupal.org">Drupal</a> modules to bring geolocation to Drupal.
-    
+
     With their <a href="http://drupal.org/project/quova">suite of modules</a> site developers can now easily create locale aware, geo-targeted compelling experiences in Drupal.
 ---
 <a href="http://developer.quova.com">Quova</a> - the worlds largest geolocation provider - has sponsored the development of a suite of <a href="http://drupal.org">Drupal</a> modules to bring geolocation to Drupal.

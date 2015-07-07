@@ -1,6 +1,6 @@
 .section-consultant li em { font-weight: bold; }
 
-#content .meta { font-style: italic; margin-bottom: 1em; color: #666; }
+a { color: white; }
 
 h1 { font-size: 25px; color: white; margin-top: 0; padding-top:0;}
 h2 { font-size: 17px; color: white; }
@@ -12,6 +12,7 @@ h3 a:hover { color: #333; text-decoration: underline; }
 
 .highlight { background-color: rgba(255,255,255,.5) !important; }
 pre { background-color: transparent; border: none; border-radius: 0;}
+code { background-color: rgb(188,207,220); }
 
 body {
   font-size: 14px;
@@ -72,47 +73,71 @@ body.section-consultant {
   color: #fff;
 }
 
-#sidebar .sidebar-wrapper { background-color: #333; padding: 15px; color: #fff; }
-#sidebar .sidebar-wrapper a { color: #fff; text-decoration: underline; }
-#sidebar .sidebar-wrapper h2 { margin: 0 0 20px; color: #72abc4; }
-
-
-.main-content h3 { margin-top: 10px; margin-bottom: 5px; font-size: 14px; font-weight: normal; }
-.main-content h3 a { text-decoration: none; }
-.main-content .post { border-bottom: 1px solid #333; padding-bottom: 20px; }
-.main-content .post .date { color: #555; font-size: 14px; padding-bottom: 4px; }
-.main-content .post p { font-size: 12px; }
+#sidebar { background-color: #333; padding: 15px; color: #fff; }
+#sidebar a { color: #fff; text-decoration: underline; }
+#sidebar h2 { margin: 0 0 20px; color: #72abc4; }
+#sidebar h3 { font-size: 16px; font-weight: 200; text-decoration: none; }
+#sidebar h3 a { text-decoration: none; }
 
 #content .main-content {
   padding: 25px;
 }
-#content .section-description {
+
+#content #main h3 { color: white; margin-top: 10px; margin-bottom: 5px; font-size: 20px; font-weight: 200; }
+#content #main h3 small { color: #ddd; }
+#content #main h3 a { color: white; text-decoration: none; }
+
+#content #sidebar h3 { color: rgb(151,189,206); }
+#content #sidebar h3 a { color: rgb(151,189,206); }
+
+#content #main .section-description {
   font-size: 15px; font-weight: 500;
 }
-#content .section-description .lead { font-size: 18px; font-weight: 500; }
-#content h3 { font-size: 14px; margin-top: 30px; }
-#content .featured-image { margin-bottom: 20px; }
-#content .project h3 { font-size: 16px; }
-#content .project { margin-top: 20px; border-bottom: 1px solid white;}
-#content .project .project-badge { float: right; }
+#content #main .lead { font-size: 18px; font-weight: 500; }
 
+/* Home */
 .section-home .main-content {
   color: #fff;
   font-size: 16px;
   line-height: 1.6;
 }
 
-#comments { padding: 25px; background-color: rgba(255, 255, 255, .8); }
-#comments .inner { }
+/* Developer */
+.section-developer #sidebar .featured-image { height: 50px; }
+
+.section-developer #content #main h3 { font-weight: 200; font-size: 16px; }
+.section-developer #content #main h3 a { }
+
+.section-developer #content #main .post { padding-bottom: 20px;  font-size: 12px; }
+.section-developer #content #main .post .date { color: #efefef; font-size: 12px; padding-bottom: 4px; }
+
+.section-developer #content .meta { font-style: italic; margin-bottom: 1em; color: rgb(187,207,220); }
+
+.section-developer #comments { padding: 25px; background-color: rgba(255, 255, 255, .8); }
+.section-developer #comments .inner { }
+
+.section-developer #sidebar .project .project-badge { float: right; }
+.section-developer #sidebar .project { margin-bottom: 30px; }
 
 
+/* Developer posts */
+.section-developer #content .post-content h3 { color: white; font-size: 15px; font-weight: 200; }
+.section-developer #content .post-content .date { color: #efefef; font-size: 12px; padding-bottom: 4px; }
+.section-developer #content .post-content .meta { font-style: italic; margin-bottom: 1em; color: rgb(187,207,220); }
+
+
+/* Entreprenuer */
+.section-entrepreneur #content .project { margin-top: 20px; margin-bottom: 30px; }
+.section-entrepreneur #sidebar .featured-image { margin-bottom: 10px; }
+
+/* Mobile */
 @media(max-width: 767px) {
   body { padding-top: 80px; }
   header,
   #content { margin: 0 -15px; }
   .navbar-default ul li.home { float: left; }
   .navbar-default ul li a { margin-left: 158px; }
-  .section-home .main-container { background-color: rgba(11, 11, 11, .3) }
+  .section-home #main { background-color: rgba(11, 11, 11, .3) }
 }
 @media(min-width: 768px) {
   #navbar { padding-right: 0; }

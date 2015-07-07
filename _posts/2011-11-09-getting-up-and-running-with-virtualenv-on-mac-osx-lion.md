@@ -2,6 +2,8 @@
 layout: post
 title: Getting up and running with virtualenv on Mac OSX Lion.
 section: developer
+summary: |
+    A quick walkthrough for using virtualenv on Mac OSX Lion.
 ---
 I recently purchased a new Macbook Air and had forgotten all of the various steps to get <em>virtualenv</em> up and running. Using the native Python packaged with OSX resulted in <em>Could not call install_name_tool -- you must have Apple's development tools installed</em> which I found confusing given that, you know, I have Xcode installed.
 

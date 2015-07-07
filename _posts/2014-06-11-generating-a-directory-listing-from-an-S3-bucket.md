@@ -2,6 +2,8 @@
 layout: post
 title: Generating a directory listing from an S3 bucket
 section: developer
+summary: |
+    Here's a jQuery plugin to generate a quick and easy way to generate a directory listing from an S3 bucket.
 ---
 I was after a quick and easy way to generate a directory listing from an S3 bucket, but all of the scripts I found were horribly convoluted, and difficult to customise the resultant markup.
 
