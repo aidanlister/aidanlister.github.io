@@ -10,25 +10,52 @@ section: developer
 
       <div class="section-description">
         <p class="lead">I have been an active web developer since 1999. I am proficient with dozens of languages but specialise in Python and PHP, and in a few different frameworks, namely Drupal and Django. I also enjoy the odd task in MIPS, MATLAB, C, or VHDL when required. I am a strong proponent of open source, web standards, and accessibility.</p>
+      </div>
 
-        <h2>Developer blog:</h2>
-        {% for post in site.posts %}
-          {% if post.section == 'developer' %}
-            <div class="post">
-              <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-              <div class="date">{{ post.date | date: '%b %d, %Y' }}</div>
-              {% if post.summary %}
-                <div class="summary">{{ post.summary|markdownify }}</div>
+      <div class="section-content">
+        <h2>From the blog:</h2>
+        <div class="posts">
+          {% for post in paginator.posts %}
+            {% if post.section == 'developer' %}
+              <div class="post clearfix">
+                <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                <div class="date">{{ post.date | date: '%b %d, %Y' }}</div>
+                {% if post.summary %}
+                  <div class="summary">{{ post.summary|markdownify }}</div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% if paginator.total_pages > 1 %}
+        <nav>
+          <ul class="pagination">
+            {% if paginator.page != 1 %}
+              <li><a href="{{ paginator.previous_page_path }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            {% endif %}
+            {% for page in (1..paginator.total_pages) %}
+              {% if page == paginator.page %}
+                <li class="active"><a href="#">{{ page }} <span class="sr-only">(current)</span></a></li>
+              {% elsif page == 1 %}
+                <li><a href="/developer/">{{ page }}</a></li>
+              {% else %}
+                <li><a href="{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a></li>
               {% endif %}
-            </div>
-          {% endif %}
-        {% endfor %}
+            {% endfor %}
+            {% if paginator.page != paginator.total_pages %}
+              <li><a href="{{ paginator.next_page_path }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
+
       </div>
     </div>
 
     <div id="sidebar" class="col-sm-6">
       <div class="sidebar-wrapper clearfix">
-        <h2>Here's some of my projects:</h2>
+        <h2>Here are some of my projects:</h2>
 
         <div class="projects">
           <div class="project">

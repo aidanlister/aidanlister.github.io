@@ -74,7 +74,13 @@ body.section-consultant {
 }
 
 #sidebar { background-color: #333; padding: 15px; color: #fff; }
-#sidebar a { color: #fff; text-decoration: underline; }
+#sidebar a:hover { text-decoration: none }
+
+.section-developer #sidebar a { color: rgb(134, 185, 206); }
+.section-entrepreneur #sidebar a { color: rgb(153, 194, 212); }
+.section-consultant #sidebar a { color: rgb(175, 208, 225); }
+.section-traveler #sidebar a { color: rgb(199, 219, 230); }
+
 #sidebar h2 { margin: 0 0 20px; color: #72abc4; }
 #sidebar h3 { font-size: 16px; font-weight: 200; text-decoration: none; }
 #sidebar h3 a { text-decoration: none; }
@@ -106,28 +112,44 @@ body.section-consultant {
 .section-developer #sidebar .featured-image { height: 50px; margin-top: 10px; margin-bottom: 10px; }
 
 .section-developer #content #main h3 { font-weight: 200; font-size: 16px; }
-.section-developer #content #main h3 a { }
 
-.section-developer #content #main .post { padding-bottom: 20px;  font-size: 12px; }
+.section-developer #content #main .post { padding: 20px 0; font-size: 12px; border-bottom: 1px solid rgb(91, 143, 164); }
+.section-developer #content #main .post:first-child { padding-top: 0; }
+.section-developer #content #main .post:last-child { border: none; }
 .section-developer #content #main .post .date { color: #efefef; font-size: 12px; padding-bottom: 4px; }
 
 .section-developer #content .meta { font-style: italic; margin-bottom: 1em; color: rgb(187,207,220); }
 
 .section-developer #comments { padding: 25px; background-color: rgba(255, 255, 255, .8); }
-.section-developer #comments .inner { }
 
 .section-developer #sidebar .project .project-badge { float: right; }
 .section-developer #sidebar .project { margin-bottom: 30px; }
 
 
 /* Developer posts */
+.section-developer #content .section-content h2 { border: 1px solid rgb(91, 143, 164); border-width: 1px 0; padding: 10px 0; }
 .section-developer #content .post-content h3 { color: white; font-size: 15px; font-weight: 200; }
 .section-developer #content .post-content .date { color: #efefef; font-size: 12px; padding-bottom: 4px; }
 .section-developer #content .post-content .meta { font-style: italic; margin-bottom: 1em; color: rgb(187,207,220); }
 
+/* Developer posts pagination */
+.pagination > li > a,
+.pagination > li > span { border-color: rgb(91, 143, 164); background-color: transparent; color: rgb(91, 143, 164); font-weight: bold; }
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus,
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus { background-color: rgb(91, 143, 164); border-color: rgb(91, 143, 164); color: #fff; font-weight: normal; }
+
 
 /* Entreprenuer */
-.section-entrepreneur #content .project { margin-top: 20px; margin-bottom: 30px; }
+.section-entrepreneur #content .project { border-top: 1px solid rgb(91, 143, 164); padding: 20px 0 40px; }
+.section-entrepreneur #content .project:first-child { border: none; }
 .section-entrepreneur #sidebar .featured-image { margin-bottom: 10px; }
 
 /* Mobile */
