@@ -85,6 +85,8 @@ body.section-consultant {
 #sidebar h3 { font-size: 16px; font-weight: 200; text-decoration: none; }
 #sidebar h3 a { text-decoration: none; }
 
+#sidebar .featured-image { margin-bottom: 10px; }
+
 #content .main-content {
   padding: 25px;
 }
@@ -101,6 +103,8 @@ body.section-consultant {
 }
 #content #main .lead { font-size: 18px; font-weight: 500; }
 
+#content #main h2 { border: 1px solid rgb(91, 143, 164); border-width: 1px 0; padding: 10px 0; margin-bottom: 20px; }
+
 /* Home */
 .section-home .main-content {
   color: #fff;
@@ -109,7 +113,7 @@ body.section-consultant {
 }
 
 /* Developer */
-.section-developer #sidebar .featured-image { height: 50px; margin-top: 10px; margin-bottom: 10px; }
+.section-developer #sidebar .featured-image { height: 50px; }
 
 .section-developer #content #main h3 { font-weight: 200; font-size: 16px; }
 
@@ -123,11 +127,11 @@ body.section-consultant {
 .section-developer #comments { padding: 25px; background-color: rgba(255, 255, 255, .8); }
 
 .section-developer #sidebar .project .project-badge { float: right; }
-.section-developer #sidebar .project { margin-bottom: 30px; }
+.section-developer #sidebar .project { margin-bottom: 40px; }
+.section-developer #sidebar .project h3 { line-height: 22px; }
 
 
 /* Developer posts */
-.section-developer #content .section-content h2 { border: 1px solid rgb(91, 143, 164); border-width: 1px 0; padding: 10px 0; }
 .section-developer #content .post-content h3 { color: white; font-size: 15px; font-weight: 200; }
 .section-developer #content .post-content .date { color: #efefef; font-size: 12px; padding-bottom: 4px; }
 .section-developer #content .post-content .meta { font-style: italic; margin-bottom: 1em; color: rgb(187,207,220); }
@@ -149,8 +153,12 @@ body.section-consultant {
 
 /* Entreprenuer */
 .section-entrepreneur #content .project { border-top: 1px solid rgb(91, 143, 164); padding: 20px 0 40px; }
-.section-entrepreneur #content .project:first-child { border: none; }
-.section-entrepreneur #sidebar .featured-image { margin-bottom: 10px; }
+.section-entrepreneur #content .project:first-child { border: none; padding-top: 0; }
+
+/* Travel */
+.section-traveler .featured-image { margin-bottom: 10px; }
+.section-traveler .trip { border-top: 1px solid rgb(91, 143, 164); padding-bottom: 20px; padding-top: 20px; }
+.section-traveler .trip:first-child { padding-top: 0; border-top: none; }
 
 /* Mobile */
 @media(max-width: 767px) {
