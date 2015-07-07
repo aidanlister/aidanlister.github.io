@@ -40,17 +40,17 @@ body.section-consultant {
 
 .navbar-default { font-family: 'Open Sans', sans-serif; background-color: inherit; border: none; margin: 0; }
 .navbar-default ul { list-style-type: none; padding: 0; margin-bottom: 0; ´}
-.navbar-default ul li { height: 39.5px; }
+.navbar-default ul li { height: 39px; }
 .navbar-default ul li.home {
-  height: 158px;
-  width: 158px;
+  height: 156px;
+  width: 156px;
 }
 .navbar-default ul li.home a {
   margin-left: 0;
   font-size: 40px;
   padding: 15px 25px;
   line-height: 43px;
-  height: 158px;
+  height: 156px;
   background-color: rgba(91, 143, 164, .9);
 }
 .navbar-default ul li.home a .suffix { color: #cddde6; }
@@ -66,7 +66,7 @@ body.section-consultant {
   color: #fff;
   font-size: 18px;
   display: block;
-  padding: 7px 20px 8px;
+  padding: 7px 20px;
 }
 .navbar-default ul li a:hover {
   text-decoration: none;
@@ -133,16 +133,27 @@ body.section-consultant {
 /* Mobile */
 @media(max-width: 767px) {
   body { padding-top: 80px; }
-  header,
-  #content { margin: 0 -15px; }
+  #navbar,
+  #content { padding: 0; }
   .navbar-default ul li.home { float: left; }
-  .navbar-default ul li a { margin-left: 158px; }
+  .navbar-default ul li a { margin-left: 156px; }
   .section-home #main { background-color: rgba(11, 11, 11, .3) }
 }
+@media(max-width: 480px) {
+  body { padding-top: 40px; }
+}
+
 @media(min-width: 768px) {
   #navbar { padding-right: 0; }
   #content { padding-left: 0; margin-top: 158px; }
   .navbar-default ul li { width: 158px; }
+  .navbar-default ul li.home {
+    height: 158px;
+    width: 158px;
+  }
+  .navbar-default ul li.home a {
+    height: 158px;
+  }
 }
 @media(min-width: 768px) and (max-width: 991px) {
   #navbar { padding-left: 0; width: 21%; }
