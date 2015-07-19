@@ -14,11 +14,18 @@ I tried a few iPhone apps, but having to type all of the numbers in one-by-one w
 It turns out, yes it can. Google recently implemented a <a href="http://support.google.com/docs/bin/answer.py?hl=en&answer=155184">importXML</a> function which lets us do all sorts of fancy things.
 
 Column A. Enter your tracking numbers
-Column B. Construct our "API" endpoint URL, <code>=CONCAT("http://auspost.com.au/track/track.html?id=",A2)</code>
-Column C. Fetch the package status, <code>=importXML(B2, "//div[@class='layout-third-column']/span")</code>
-Column D. Fetch the latest date/activity/location row, <code>=importXML(B2, "//div[@class='trackingDetails clearfix']//table/tbody/tr[2]")</code>
+
+Column B. Construct our "API" endpoint URL,
+<code>=CONCAT("http://auspost.com.au/track/track.html?id=",A2)</code>
+
+Column C. Fetch the package status,
+<code>=importXML(B2, "//div[@class='layout-third-column']/span")</code>
+
+Column D. Fetch the latest date/activity/location row,
+<code>=importXML(B2, "//div[@class='trackingDetails clearfix']//table/tbody/tr[2]")</code>
 
 The last column will spread into Column E and F automatically. Brilliant, this works perfectly and our staff can now see the status of all our deliveries in a single glance.
 
 Here's what it looks like:
+
 <a href="/assets/img/uploads/2012/06/google-docs-postage-tracking-e1339781804323.png"><img src="/assets/img/uploads/2012/06/google-docs-postage-tracking-e1339781804323.png" alt="" title="Tracking parcel delivery with Google Docs" width="500" height="117" class="aligncenter size-full wp-image-538" /></a>
